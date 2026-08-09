@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+  <title>Create Hackathon — Application | The Coded Cipher</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="profile-build.css">
+  <link rel="stylesheet" href="hackathon-create.css">
+  <script src="hackathon-create.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+
+<nav class="sa-navbar">
+  <div class="sa-nav-spacer">
+    <a href="index.html" class="sh-brand" aria-label="The Coded Cipher — home">
+      <svg class="sh-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="2"/>
+        <path d="M19.3 19.3 27.5 27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.75">
+          <path d="M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6"/>
+        </g>
+      </svg>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">The Coded Cipher</span>
+        <span class="sh-brand-sub">221B &middot; Estd. 1887</span>
+      </span>
+    </a>
+  </div>
+  <div class="sa-nav-links">
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </div>
+  <div class="sa-nav-user">
+    <span class="sa-nav-avatar" id="saNavAvatar">&hellip;</span>
+    <span class="sa-nav-name" id="saNavName">&hellip;</span>
+    <a href="#" id="adminLogoutLink" style="margin-left:14px; font-size:0.75rem; letter-spacing:0.08em; opacity:0.75;">LOGOUT</a>
+  </div>
+</nav>
+
+<div class="hc-top-row">
+  <div class="hc-tabs">
+    <a href="hackathon-basics.html" class="hc-tab">Basics</a>
+    <span class="hc-tab active">Application</span>
+    <a href="hackathon-prizes.html" class="hc-tab" data-hc-nav="hackathon-prizes.html">Prizes &amp; Judges</a>
+  </div>
+</div>
+
+<div class="hc-panel">
+
+  <p class="hc-section-label first">About</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldFullName" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">First and last name</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldBio" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Bio</span>
+    </label>
+  </div>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldGender" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Gender</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label">Experience</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldDomainExpertise" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Domain Expertise</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldSkills" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Skills</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label">Links</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldGithub" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Github</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldLinkedin" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Linkedin</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label">Contact</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldPhone" class="hc-toggle-checkbox" checked>
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Phone number</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" name="fieldEmail" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Email address</span>
+    </label>
+  </div>
+
+  <div class="hc-bottom-nav">
+    <a href="hackathon-basics.html" class="hc-nav-btn" data-hc-nav="hackathon-basics.html">Previous step</a>
+    <a href="hackathon-prizes.html" class="hc-nav-btn" data-hc-nav="hackathon-prizes.html">Next step</a>
+  </div>
+
+</div>
+
+</body>
+</html>

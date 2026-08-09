@@ -1,0 +1,445 @@
+/* =========================================================
+   Hackathon Detail page (e.g. "The Deductive Engine")
+   Link AFTER style.css AND hackathons.css — this file reuses
+   .navbar / .nav-* / .site-footer / .footer-* / .cream / .gold
+   already defined there.
+   ========================================================= */
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+}
+
+.hd-wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Hero ---------- */
+.hd-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: var(--soot-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hd-hero-title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0;
+  padding: 0 var(--gutter);
+  text-align: center;
+  text-shadow: 0 2px 26px rgba(10, 8, 6, 0.95), 0 0 70px rgba(10, 8, 6, 0.85);
+}
+
+/* ---------- Info card ---------- */
+.hd-info-card {
+  font-family: var(--font-body);
+  color: #ECDDB9;
+  background: linear-gradient(165deg, var(--soot-700), var(--soot-850));
+  border-radius: var(--radius);
+  border: var(--hair-brass);
+  box-shadow: var(--shadow-md);
+  padding: 55px 60px;
+  margin: 60px auto 0;
+}
+
+.hd-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 35px;
+}
+
+
+.hd-section-gap { margin-top: 28px; }
+
+.hd-social-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.hd-social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass-300);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  background: radial-gradient(circle at 40% 30%, var(--soot-600), var(--soot-900) 78%);
+  box-shadow: inset 0 0 0 1.5px var(--brass-700), var(--shadow-sm);
+  text-decoration: none;
+}
+
+.hd-social-icon:hover {
+  color: var(--gaslight);
+  box-shadow: inset 0 0 0 1.5px var(--brass-500), 0 0 18px rgba(240, 180, 90, 0.25);
+}
+
+.hd-social-icon.li { font-size: 0.7rem; }
+
+/* ---------- Apply now button ---------- */
+.hd-apply-btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: linear-gradient(180deg, var(--oxblood-500), var(--oxblood-700));
+  color: var(--parchment-100);
+  border: 1px solid var(--oxblood-300);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 50px 0px;
+  transition: opacity 0.3s ease;
+}
+
+/* Closed applications are a statement, not an invitation: the colour drains
+   out and the button stops looking pressable. */
+.hd-apply-btn:hover { filter: brightness(1.12); }
+
+.hd-apply-btn.is-closed,
+.hd-apply-btn[disabled] {
+  background: linear-gradient(180deg, var(--soot-600), var(--soot-800));
+  border-color: var(--brass-900);
+  color: var(--text-low);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.hd-apply-btn.is-closed:hover,
+.hd-apply-btn[disabled]:hover { filter: none; }
+
+/* ---------- Stats row ---------- */
+.hd-stats-row {
+  display: flex;
+  border-top: 1px solid rgba(186, 157, 89, 0.25);
+  border-bottom: 1px solid rgba(186, 157, 89, 0.25);
+  padding: 45px 0;
+  margin-bottom: 90px;
+}
+
+.hd-stat {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid rgba(186, 157, 89, 0.25);
+}
+
+.hd-stat:last-child { border-right: none; }
+
+.hd-stat-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.3rem;
+  color: var(--brass-700);
+  -webkit-text-stroke: 1px rgba(186, 157, 89, 0.75);
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.hd-stat.featured .hd-stat-number {
+  color: var(--gold-accent);
+  -webkit-text-stroke: 0;
+  font-size: 3rem;
+}
+
+.hd-stat-label {
+  font-family: var(--font-mono);
+  color: rgba(226, 226, 226, 0.6);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ---------- Glory & Plunder ---------- */
+.hd-prizes-section {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.hd-prizes-heading {
+  font-family: var(--font-display);
+  color: #E2E2E2;
+  font-size: 2.6rem;
+  margin: 0 0 12px;
+}
+
+.hd-prizes-subtitle {
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 0.85rem;
+  margin: 0 0 50px;
+}
+
+.hd-prizes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.hd-prize-card {
+  border: 1px solid rgba(186, 157, 89, 0.4);
+  border-radius: var(--radius);
+  padding: 40px 25px;
+}
+
+.hd-prize-place {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--gold-accent);
+  font-size: 1.1rem;
+  margin: 0 0 20px;
+}
+
+.hd-prize-icon {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--soot-900);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, var(--brass-300), var(--brass-700) 62%, var(--brass-900));
+  border: 1px solid var(--brass-900);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hd-prize-amount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(226, 226, 226, 0.7);
+  margin-bottom: 12px;
+}
+
+.hd-prize-award {
+  font-family: var(--font-body);
+  color: #d8d0c0;
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(186, 157, 89, 0.25);
+}
+
+.hd-prize-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-body);
+  color: #b8b8b8;
+  font-size: 0.78rem;
+  line-height: 2;
+}
+
+.hd-prize-perks li::before {
+  content: "• ";
+  color: var(--gold-accent);
+}
+
+/* ---------- Grand Inquisitors (judges) ---------- */
+.hd-judges-section {
+  text-align: center;
+  padding-bottom: 90px;
+}
+
+.hd-judges-heading {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  margin: 0 0 12px;
+}
+
+.hd-judges-heading .cream { color: #E2E2E2; }
+.hd-judges-heading .gold { color: var(--gold-accent); }
+
+.hd-judges-subtitle {
+  font-family: var(--font-body);
+  color: rgba(226, 226, 226, 0.55);
+  font-size: 0.85rem;
+  margin: 0 0 50px;
+}
+
+.hd-judges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.hd-judge-card {
+  border: 1px solid rgba(186, 157, 89, 0.35);
+  border-radius: var(--radius);
+  padding: 45px 20px;
+}
+
+.hd-judge-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 22px;
+}
+
+.hd-judge-name {
+  font-family: var(--font-display);
+  color: #b8b8b8;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .hd-info-card { padding: 40px 30px; border-radius: 3px; }
+  .hd-prizes-grid,
+  .hd-judges-grid { grid-template-columns: 1fr; }
+  .hd-stats-row { flex-direction: column; gap: 25px; }
+  .hd-stat { border-right: none; }
+  .hd-hero-title { font-size: 2.2rem; }
+}
+
+/* ============================================================================
+   Prizes + judges are organiser-entered now, so these cover the cases the
+   static mock never had: a highlighted first place, a judge with no photo, and
+   a judge's title under their name.
+   ========================================================================== */
+
+/* First prize carries a little more weight than the rest. */
+.hd-prize-card.featured {
+  border-color: rgba(186, 157, 89, 0.75);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(186, 157, 89, 0.09), transparent 70%);
+}
+
+.hd-prize-card.featured .hd-prize-amount {
+  -webkit-text-stroke: 1px rgba(186, 157, 89, 0.9);
+}
+
+/* These are <p>s that only ever set margin-bottom, so the browser's default
+   top margin was opening a gap between the emblem and the amount. */
+.hd-prize-place,
+.hd-prize-amount,
+.hd-prize-award {
+  margin-top: 0;
+}
+
+/* A card whose last element is the amount or emblem shouldn't trail space. */
+.hd-prize-card .hd-prize-amount:last-child,
+.hd-prize-card .hd-prize-icon:last-child {
+  margin-bottom: 0;
+}
+
+/* Cards keep an even height whichever has the most bullet points. */
+.hd-prizes-grid,
+.hd-judges-grid {
+  align-items: stretch;
+}
+
+/* The section is centre-aligned, which is right for the place, emblem and
+   amount but left a list of differently-sized bullets looking ragged. Centre
+   the list as a block and left-align the text inside it. */
+.hd-prize-perks {
+  display: inline-block;
+  text-align: left;
+}
+
+/* Judge with no uploaded photo — engraved initials instead of a broken image. */
+.hd-judge-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #241d12;
+  border: 1px solid rgba(186, 157, 89, 0.45);
+  color: var(--gold-accent);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  letter-spacing: 0.03em;
+}
+
+.hd-judge-title {
+  font-family: var(--font-body);
+  color: rgba(226, 226, 226, 0.5);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  margin: 6px 0 0;
+}
+
+/* The grids get an inline column count from the JS to suit how many cards
+   there actually are; on narrow screens one column always wins. */
+@media (max-width: 900px) {
+  .hd-prizes-grid,
+  .hd-judges-grid { grid-template-columns: 1fr !important; }
+}
+
+/* =========================================================================
+   Hero — the organiser's uploaded banner
+
+   hackathon-details.js paints the upload onto the .sh-scene layer and adds
+   .has-banner here. The drawn cipher wall and its opaque backing step aside;
+   the fog stays, so a photograph gets the same drifting atmosphere as the
+   drawn heroes elsewhere on the site.
+   ========================================================================= */
+
+.hd-hero.has-banner .sh-scene {
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* The wall pattern and the drawn sky both have to go, or they sit as a haze of
+   glyphs over the photograph. */
+.hd-hero.has-banner .sh-scene::before,
+.hd-hero.has-banner .sh-skyline {
+  display: none;
+}
+
+/* Lighter than over a drawn scene — a photograph brings its own depth. */
+.hd-hero.has-banner .sh-fog {
+  opacity: 0.4;
+}
+
+/* Organisers upload whatever they like, and a pale banner — a parchment map,
+   say — leaves the gold title almost invisible. So rather than a gentle
+   vignette, the title gets its own dark pool: an ellipse centred on the
+   headline, strong at the middle and gone by the edges. Dark uploads barely
+   register the change; light ones get exactly the backing they need. */
+.hd-hero.has-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 34% at 50% 50%,
+      rgba(10, 8, 6, 0.86) 0%,
+      rgba(10, 8, 6, 0.62) 45%,
+      transparent 78%),
+    radial-gradient(78% 70% at 50% 50%, transparent 0%, rgba(10, 8, 6, 0.5) 100%),
+    linear-gradient(180deg, rgba(10, 8, 6, 0.5) 0%, transparent 34%, rgba(10, 8, 6, 0.45) 100%);
+}
+
+/* The halo behind the lettering is tuned for the drawn wall; over a photograph
+   it needs to be tighter and darker to do any work. */
+.hd-hero.has-banner .hd-hero-title {
+  text-shadow: 0 2px 10px rgba(10, 8, 6, 1),
+               0 0 28px rgba(10, 8, 6, 0.98),
+               0 0 60px rgba(10, 8, 6, 0.85);
+}

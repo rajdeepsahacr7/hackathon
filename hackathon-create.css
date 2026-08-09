@@ -1,0 +1,255 @@
+/* =========================================================
+   Create Hackathon wizard (Basics / Application steps)
+   Link AFTER style.css, profile.css (navbar) AND
+   profile-build.css (reuses .pb-input for text/date/textarea fields).
+   ========================================================= */
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+}
+
+/* ---------- Top row: step tabs + ghost "Next step" link ---------- */
+.hc-top-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: var(--container);
+  margin: 55px auto 70px;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+}
+
+.hc-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--brass-900);
+  border-radius: var(--radius);
+  background: var(--soot-850);
+  padding: 5px;
+}
+
+.hc-tab {
+  display: inline-block;
+  font-family: var(--font-display);
+  color: var(--brass-300);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 11px 26px;
+  border-radius: var(--radius);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease);
+}
+
+.hc-tab.active {
+  background: linear-gradient(180deg, var(--brass-700), var(--brass-900));
+  color: var(--parchment-100);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), var(--shadow-sm);
+}
+
+.hc-ghost-link {
+  position: absolute;
+  right: var(--gutter);
+  top: 14px;
+  font-family: var(--font-body);
+  color: rgba(186, 157, 89, 0.55);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.hc-ghost-link:hover {
+  color: var(--gold-accent);
+}
+
+/* ---------- Panel ---------- */
+.hc-panel {
+  max-width: var(--container);
+  margin: 0 auto 90px;
+  padding: 55px 65px 70px;
+  border: 1px solid var(--gold-accent);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.hc-field-group {
+  margin-bottom: 45px;
+}
+
+.hc-field-label {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.hc-textarea-large {
+  height: 300px;
+}
+
+/* ---------- Section labels + toggle pills (Application step) ---------- */
+.hc-section-label {
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.2rem;
+  margin: 0 0 25px;
+}
+
+.hc-section-label.first {
+  margin-top: 0;
+}
+
+.hc-toggle-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 45px;
+  flex-wrap: wrap;
+}
+
+.hc-toggle-item {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--gold-accent);
+  border-radius: 30px;
+  padding: 16px 25px;
+  background: #241d12;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.hc-toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.hc-toggle-box {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #c9b98a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hc-toggle-box::after {
+  content: "";
+  color: #2a1f14;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.hc-toggle-checkbox:checked + .hc-toggle-box::after {
+  content: "\2713";
+}
+
+.hc-toggle-label-text {
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  font-size: 1.05rem;
+}
+
+/* ---------- Bottom nav buttons ---------- */
+.hc-bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.hc-bottom-nav.end {
+  justify-content: flex-end;
+}
+
+.hc-nav-btn {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 4px;
+  color: var(--gold-accent);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 16px 42px;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hc-nav-btn:hover {
+  background: var(--gold-accent);
+  color: #14100a;
+}
+
+@media (max-width: 800px) {
+  .hc-panel { padding: 40px 30px; border-radius: 3px; }
+  .hc-toggle-row { flex-direction: column; }
+  .hc-ghost-link { display: none; }
+  .hc-bottom-nav { flex-direction: column; gap: 15px; }
+  .hc-nav-btn { text-align: center; }
+}
+
+.sa-navbar {
+  display: flex;
+  align-items: center;
+  padding: 22px var(--gutter);
+  border-bottom: 1px solid rgba(186, 157, 89, 0.3);
+}
+
+.sa-nav-spacer {
+  flex: 1;
+}
+
+.sa-nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+.sa-nav-links a {
+  font-family: var(--font-body);
+  color: #d8d8d8;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.sa-nav-links a:hover {
+  color: #fff;
+}
+
+.sa-nav-user {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sa-nav-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, var(--brass-300), var(--brass-700) 62%, var(--brass-900));
+  border: 1px solid var(--brass-900);
+  color: var(--soot-900);
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.sa-nav-name {
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+}

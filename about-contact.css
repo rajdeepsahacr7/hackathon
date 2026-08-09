@@ -1,0 +1,267 @@
+/* ===========================================================
+   about-contact.css
+   Page-specific styles for about-us.html and contact-us.html.
+   Reuses design tokens (--gold-accent, --cream) and shared
+   classes (.track-section, .section-heading, .endeavour-*,
+   .consult-form, .stats-bar) already defined in style.css.
+   =========================================================== */
+
+/* ---------- About: lede / case-background prose ---------- */
+.about-lede {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-lede p {
+  font-family: var(--font-body);
+  color: #d8d8d8;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin: 0 0 22px;
+}
+
+.about-lede p:last-child { margin-bottom: 0; }
+
+/* ---------- About: static stat numbers (no JS dependency) ---------- */
+.stats-bar.static .stat-number { font-size: 2.5rem; }
+
+/* ---------- About: Investigators grid (initials avatars) ---------- */
+.investigators-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 50px;
+}
+
+.investigator-card {
+  border: 1px solid rgba(186, 157, 89, 0.3);
+  border-radius: var(--radius);
+  padding: 36px 20px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.investigator-card:hover { border-color: var(--gold-accent); }
+
+.investigator-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--gold-accent);
+  color: var(--parchment-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 auto 18px;
+}
+
+.investigator-name {
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  font-size: 1.02rem;
+  margin: 0 0 6px;
+}
+
+.investigator-role {
+  font-family: var(--font-mono);
+  color: var(--gold-accent);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) { .investigators-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .investigators-grid { grid-template-columns: 1fr; } }
+
+/* ---------- About: closing CTA banner ---------- */
+.cta-banner {
+  max-width: var(--container);
+  margin: 20px auto 0;
+  padding: 70px var(--gutter);
+  text-align: center;
+  border: 1px solid rgba(186, 157, 89, 0.4);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+.cta-banner h2 {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  margin: 0 0 14px;
+}
+
+.cta-banner h2 .cream { color: var(--cream); }
+.cta-banner h2 .gold { color: var(--gold-accent); }
+
+.cta-banner p {
+  font-family: var(--font-body);
+  color: #b8b8b8;
+  font-size: 0.9rem;
+  margin: 0 0 30px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--oxblood-500), var(--oxblood-700));
+  border: 1px solid var(--oxblood-300);
+  color: var(--parchment-100);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--parchment-100);
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 14px 42px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.cta-btn:hover { opacity: 0.85; }
+
+/* ---------- Contact: intro banner (text-only, no image needed) ---------- */
+.contact-hero {
+  padding: 90px var(--gutter) 20px;
+  max-width: var(--container);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-hero p.contact-hero-sub {
+  max-width: 620px;
+  margin: 20px auto 0;
+  font-family: var(--font-body);
+  color: #b8b8b8;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+/* ---------- Contact: two-column grid ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px var(--gutter) 100px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Contact: info card ---------- */
+.contact-info-card {
+  border: 1px solid rgba(186, 157, 89, 0.4);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  box-sizing: border-box;
+}
+
+.contact-info-card h3 {
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: 1.5rem;
+  margin: 0 0 30px;
+}
+
+.contact-info-row { margin-bottom: 24px; }
+.contact-info-row:last-of-type { margin-bottom: 0; }
+
+.contact-info-label {
+  display: block;
+  font-family: var(--font-mono);
+  color: var(--gold-accent);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.contact-info-value,
+.contact-info-value a {
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  font-size: 0.95rem;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.contact-info-value a:hover { color: var(--gold-accent); }
+
+.contact-quote {
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(186, 157, 89, 0.4);
+  font-family: var(--font-body);
+  font-style: italic;
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+/* ---------- Contact: form panel ---------- */
+.contact-form-panel .panel-heading {
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: 1.6rem;
+  margin: 0 0 26px;
+  text-align: left;
+}
+
+.contact-form-panel .consult-form { padding: 40px 36px; }
+
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(226, 226, 226, 0.3);
+  border-radius: 4px;
+  padding: 12px 14px;
+  color: #E2E2E2;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  min-height: 110px;
+  resize: vertical;
+}
+
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold-accent);
+}
+
+/* ---------- Contact: FAQ ---------- */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 100px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(226, 226, 226, 0.12);
+  padding: 26px 0;
+}
+
+.faq-item:first-child { padding-top: 0; }
+
+.faq-q {
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  font-size: 1.02rem;
+  margin: 0 0 10px;
+}
+
+.faq-q::before { content: "Q. "; color: var(--gold-accent); }
+
+.faq-a {
+  font-family: var(--font-body);
+  color: #999;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin: 0;
+}

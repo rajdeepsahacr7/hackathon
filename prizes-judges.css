@@ -1,0 +1,187 @@
+/* ============================================================================
+   Prizes (1st/2nd/3rd) + Judges sections on the create wizard and edit page.
+   Link AFTER hackathon-create.css — reuses .pb-input and var(--gold-accent),
+   and deliberately echoes the .hd-prize-card look from the details page so
+   what the organiser fills in reads like what visitors will see.
+   Paired with prizes-judges.js.
+   ========================================================================== */
+
+.pj-intro {
+  font-family: var(--font-body);
+  color: rgba(226, 226, 226, 0.6);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  margin: -12px 0 28px;
+  max-width: 70ch;
+}
+
+/* ---------- one prize tier ---------- */
+.pj-card {
+  border: 1px solid rgba(186, 157, 89, 0.35);
+  border-radius: var(--radius);
+  padding: 28px 30px 8px;
+  margin-bottom: 26px;
+}
+
+.pj-card[data-tier="prize1"] {
+  border-color: rgba(186, 157, 89, 0.65);
+}
+
+.pj-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(186, 157, 89, 0.22);
+}
+
+.pj-card-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--soot-900);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, var(--brass-300), var(--brass-700) 62%, var(--brass-900));
+  border: 1px solid var(--brass-900);
+}
+
+.pj-card-title {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--gold-accent);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---------- fields inside a card / judge row ---------- */
+.pj-field {
+  margin-bottom: 24px;
+}
+
+.pj-label {
+  display: block;
+  font-family: var(--font-body);
+  color: #d8d0c0;
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+}
+
+.pj-hint {
+  font-family: var(--font-mono);
+  color: rgba(226, 226, 226, 0.45);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  margin: 0 0 10px;
+  max-width: 66ch;
+}
+
+.pj-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* profile-build.css pins `textarea.pb-input` to 60px, which showed one and a
+   half lines of a bullet list. That selector outranks a bare class, hence the
+   element name here. Tall enough for six of the eight allowed bullets, and
+   draggable if the organiser wants all eight on screen at once. */
+textarea.pj-textarea {
+  height: 215px;
+  line-height: 1.9;
+  resize: vertical;
+}
+
+/* The select inherits .pb-input, but browsers need a nudge to keep the
+   dropdown arrow readable on the dark panel. */
+.pj-icon-select {
+  max-width: 320px;
+  color: #E2E2E2;
+}
+
+.pj-icon-select option {
+  background: #14110c;
+  color: #E2E2E2;
+}
+
+/* ---------- judges ---------- */
+.pj-judge-row {
+  border: 1px solid rgba(186, 157, 89, 0.3);
+  border-radius: var(--radius);
+  padding: 22px 26px 2px;
+  margin-bottom: 18px;
+}
+
+.pj-judge-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pj-judge-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(186, 157, 89, 0.55);
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: 0.95rem;
+}
+
+.pj-add,
+.pj-remove {
+  font-family: var(--font-mono);
+  background: transparent;
+  border: 1px solid rgba(186, 157, 89, 0.5);
+  color: var(--gold-accent);
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.pj-add {
+  display: inline-block;
+  padding: 11px 22px;
+  font-size: 0.8rem;
+  /* Keeps it off the Save / Finish Setup row that follows. */
+  margin-bottom: 18px;
+}
+
+.pj-remove {
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  border-color: rgba(186, 157, 89, 0.32);
+  color: rgba(226, 226, 226, 0.6);
+}
+
+.pj-add:hover {
+  background: var(--gold-accent);
+  color: #0d0d0d;
+}
+
+.pj-remove:hover {
+  border-color: #b4674a;
+  color: #d98b6a;
+}
+
+/* Without this the UA's [hidden] rule loses to the display above. */
+.pj-add[hidden],
+.pj-remove[hidden] {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .pj-card { padding: 22px 18px 4px; }
+  .pj-judge-row { padding: 18px 16px 2px; }
+  .pj-icon-select { max-width: 100%; }
+}

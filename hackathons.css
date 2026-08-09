@@ -1,0 +1,421 @@
+/* =========================================================
+   Hackathons listing page
+   Link AFTER your main style.css so --gutter, --container,
+   --gold-accent are already defined in :root there.
+   ========================================================= */
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px var(--gutter);
+  border-bottom: 1px solid rgba(186, 157, 89, 0.2);
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #E2E2E2;
+  flex-shrink: 0;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.nav-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  font-family: var(--font-body);
+  color: #d8d8d8;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+
+
+.nav-center a:hover { color: var(--gold-accent); }
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+}
+
+
+.nav-login-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-login-btn {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color:#fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+  line-height: 1;
+}
+
+.nav-login-caret {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.nav-login-dropdown.open .nav-login-caret {
+  transform: rotate(180deg);
+}
+
+.nav-login-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #1a1410;
+  border: 1px solid var(--gold-accent);
+  border-radius: var(--radius);
+  min-width: 190px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 20;
+}
+
+.nav-login-dropdown:hover .nav-login-menu,
+.nav-login-dropdown.open .nav-login-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-login-menu a {
+  display: block;
+  padding: 12px 18px;
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-login-menu a:hover {
+  background: var(--gold-accent);
+  color: #14100a;
+}
+
+
+.nav-signup {
+  font-family: var(--font-body);
+  border: 1px solid var(--gold-accent);
+  border-radius: var(--radius);
+  padding: 8px 22px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-signup a:hover {
+  background: var(--gold-accent);
+}
+
+
+
+/* ---------- Static hero banner ---------- */
+.hack-hero {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  background: var(--soot-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* The copy has to clear the drawn scene behind it. */
+.hack-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hack-hero-heading {
+  font-family: var(--font-display);
+  text-shadow: 0 2px 24px rgba(10, 8, 6, 0.95), 0 0 60px rgba(10, 8, 6, 0.8);
+  color: var(--gold-accent);
+  font-size: 4rem;
+  margin: 0 0 15px;
+}
+
+.hack-hero-subtitle {
+  font-family: var(--font-label);
+  color: var(--brass-300);
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 18px rgba(10, 8, 6, 0.95);
+  margin: 0;
+}
+
+/* ---------- Ongoing Cases eyebrow + pill heading ---------- */
+.hack-listing {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 90px var(--gutter) 100px;
+}
+
+.hack-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.hack-eyebrow-line {
+  width: 50px;
+  height: 1px;
+  background: rgba(186, 157, 89, 0.5);
+}
+
+.hack-eyebrow-text {
+  font-family: var(--font-mono);
+  color: var(--gold-accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.hack-pill-heading-wrap {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hack-pill-heading {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 40px;
+  padding: 18px 55px;
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+}
+
+.hack-pill-heading .cream { color: #E2E2E2; }
+.hack-pill-heading .gold { color: var(--gold-accent); }
+
+/* ---------- Case grid (2 rows x 3 cols) ---------- */
+.hack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.hack-card {
+  position: relative;
+  height: 300px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hack-overlay {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(20, 15, 10, 0.85);
+  border: 1px solid var(--gold-accent);
+  padding: 18px 20px;
+}
+
+.hack-title {
+  font-family: var(--font-display);
+  color: #E2E2E2;
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+}
+
+.hack-desc {
+  font-family: var(--font-body);
+  color: #d8d0c0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.hack-btn {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  color: var(--gold-accent);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 7px 18px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hack-btn:hover {
+  background: var(--gold-accent);
+  color: #14100a;
+}
+
+@media (max-width: 900px) {
+  .nav-center { display: none; }
+  .hack-grid { grid-template-columns: repeat(2, 1fr); }
+  .hack-hero-heading { font-size: 2.6rem; }
+}
+
+@media (max-width: 600px) {
+  .hack-grid { grid-template-columns: 1fr; }
+  .hack-pill-heading { font-size: 1.6rem; padding: 14px 30px; }
+  .hack-hero { height: 420px; }
+}
+
+
+/* ---------- Fallback when no card image has been uploaded ----------
+   hackathon-list.js adds .no-banner instead of pointing background-image at a
+   file that may not exist. This keeps the grid tidy: an engraved parchment
+   panel in the site's palette rather than a broken-image gap. */
+.hack-card.no-banner {
+  background-color: #241d12;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(186, 157, 89, 0.16), transparent 58%),
+    repeating-linear-gradient(135deg,
+      rgba(186, 157, 89, 0.05) 0px,
+      rgba(186, 157, 89, 0.05) 1px,
+      transparent 1px,
+      transparent 9px);
+  border: 1px solid rgba(186, 157, 89, 0.35);
+}
+
+/* =========================================================================
+   Case cards — pointer-tracked 3D tilt
+
+   The card itself takes the rotation; the gold overlay panel counter-shifts a
+   few pixels so it reads as sitting proudly in front of the banner rather than
+   painted onto it. A specular sweep follows the cursor via --mx / --my, which
+   hackathon-list.js updates on pointermove.
+   ========================================================================= */
+
+.hack-card {
+  /* The transform origin sits slightly low so the tilt feels hinged near the
+     card's base — a photograph being lifted off a desk, not spun in space. */
+  transform-origin: 50% 60%;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.55s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  will-change: transform;
+  --mx: 50%;
+  --my: 50%;
+  --glare: 0;
+}
+
+/* While the pointer is on the card the easing shortens, so the tilt tracks the
+   cursor instead of lagging a half second behind it. */
+.hack-card.is-tilting {
+  transition: transform 0.12s ease-out, box-shadow 0.3s ease;
+  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.62),
+              0 0 0 1px rgba(186, 157, 89, 0.5),
+              0 0 34px rgba(186, 157, 89, 0.18);
+  z-index: 2;
+}
+
+/* Specular highlight — a soft pool of light where the cursor is, plus a faint
+   gold rim tint. Sits above the banner but below the overlay panel. */
+.hack-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--glare);
+  transition: opacity 0.4s ease;
+  background:
+    radial-gradient(circle 240px at var(--mx) var(--my),
+      rgba(255, 242, 214, 0.34) 0%,
+      rgba(255, 226, 170, 0.15) 32%,
+      transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* Photographic banners already carry their own lamplight, so the sweep needs a
+   little more strength there to read at all; the parchment fallback is plain
+   enough that the softer default already shows clearly. */
+.hack-card:not(.no-banner)::after {
+  background:
+    radial-gradient(circle 240px at var(--mx) var(--my),
+      rgba(255, 244, 220, 0.42) 0%,
+      rgba(255, 228, 176, 0.19) 32%,
+      transparent 70%);
+}
+
+.hack-overlay {
+  z-index: 2;
+  /* Counter-motion is written by JS into these, so the panel drifts against
+     the tilt and picks up a little lift. */
+  transform: translate3d(var(--ox, 0px), var(--oy, 0px), 0);
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+              border-color 0.4s ease, background 0.4s ease;
+}
+
+.hack-card.is-tilting .hack-overlay {
+  transition: transform 0.12s ease-out, border-color 0.4s ease, background 0.4s ease;
+  background: rgba(24, 18, 12, 0.9);
+  border-color: var(--gold-accent);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+}
+
+/* The grid needs breathing room so a lifted card is not clipped by its
+   neighbours, and stacking has to work for the raised card. */
+.hack-grid { perspective: 1400px; }
+.hack-card { z-index: 1; }
+
+/* Anyone who has asked for less motion keeps a flat, quiet card.
+
+   There is deliberately no `@media (hover: none)` rule here. Some desktop
+   browsers report that query as true on a real mouse, which would strip the
+   glow and highlight from visitors who should have them. Touch devices are
+   handled in JS instead: `.is-tilting` and `--glare` are only ever set for a
+   mouse pointer, so a tapped card simply never enters the lifted state. */
+@media (prefers-reduced-motion: reduce) {
+  .hack-card,
+  .hack-overlay { transition: none; }
+  .hack-card.is-tilting { transform: none; }
+}

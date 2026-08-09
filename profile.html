@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+<title>Case File № 221B — Rowan Blackwood | Hackathon Dossier</title>
+<meta name="description" content="Hackathon profile dossier for Rowan Blackwood, Consulting Developer, styled as a Sherlock Holmes case file." />
+
+<!-- Google Fonts: Cinzel (engraved display/headers), EB Garamond (Victorian body copy), Special Elite (typewriter case notes) -->
+<link rel="stylesheet" href="profile.css">
+<script src="profile.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to the case file</a>
+
+<!-- Ambient drifting fog, purely decorative -->
+<div class="fog fog--one" aria-hidden="true"></div>
+<div class="fog fog--two" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="navbar">
+
+  <div class="nav-left">
+    <a href="index.html" class="sh-brand" aria-label="The Coded Cipher — home">
+      <svg class="sh-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="8.6" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M19.3 19.3 27.5 27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.72">
+          <path d="M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6"/>
+        </g>
+      </svg>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">The Coded Cipher</span>
+        <span class="sh-brand-sub">221B &middot; Estd. 1887</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="#">Hackathons</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </div>
+
+  <div class="nav-user">
+  <div class="nav-user-dropdown">
+    <button class="nav-user-trigger" type="button">
+      <span class="nav-user-avatar" id="navUserAvatar">&hellip;</span>
+      <span class="nav-user-name" id="navUserName">&hellip;</span>
+      <span class="nav-user-caret">&#9662;</span>
+    </button>
+    <div class="nav-user-menu">
+      <a href="profile.html">My Profile</a>
+      <a href="organise_hackathon.html">Hackathon dashboard</a>
+      <a href="#" id="logoutLink">Logout</a>
+    </div>
+  </div>
+</div>
+</nav>
+
+<div class="profile-wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__lamp" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <h1 class="hero__title" id="heroTitle">Rowan&nbsp;Blackwood</h1>
+      <p class="hero__subtitle">Full-Stack Detective</p>
+      <p class="hero__quote">“You know my methods: observe the problem closely, gather every clue the codebase offers, and the solution deduces itself.”</p>
+
+      
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="about.html">Edit Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DOSSIER / ABOUT ================= -->
+  <section class="section" id="dossier">
+    <h2 class="section__title"><span class="section__eyebrow">Exhibit A</span>The Dossier</h2>
+
+    <div class="dossier">
+      <figure class="dossier__portrait">
+        <svg viewBox="0 0 220 260" aria-hidden="true">
+          <rect x="4" y="4" width="212" height="252" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M110 60c-26 0-40 20-40 46 0 14 4 26 11 35-20 8-41 22-41 55v20h140v-20c0-33-21-47-41-55 7-9 11-21 11-35 0-26-14-46-40-46z" fill="currentColor" opacity="0.85"/>
+          <path d="M60 74c8-18 22-30 50-16 18 4 30-2 34 14 4-10-2-26-18-32-30-14-58-2-70 18-6 8-4 12-4 16z" fill="currentColor"/>
+          <path d="M150 96c10 4 18 14 20 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+        <figcaption>Ref. photograph — Baker&nbsp;St. archive, plate&nbsp;VII</figcaption>
+      </figure>
+
+      <div class="dossier__card">
+        <p class="label">Subject's statement, transcribed verbatim</p>
+        <p id="dossierAboutText">I came to code the way Holmes came to crime: by refusing to accept the obvious answer until the evidence forced it. Four years ago that meant debugging a leaking API at 2&nbsp;a.m.; today it means leading full-stack investigations under a forty-eight-hour hackathon clock.</p>
+
+        <ul class="dossier__facts" id="dossierFacts">
+          <li><span class="label">Origin</span>Trained in Computer Science, hardened in production incidents</li>
+          <li><span class="label">Specialises in</span>Full-stack architecture, applied machine learning, rapid prototyping</li>
+          <li><span class="label">Known associates</span>The Baker Street Irregulars (see Exhibit&nbsp;E)</li>
+          <li><span class="label">Currently investigating</span>Fraud-detection systems and real-time collaboration tools</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EVIDENCE BOARD / SKILLS ================= -->
+  <section class="section section--dark" id="evidence">
+    <h2 class="section__title"><span class="section__eyebrow">Exhibit B</span>The Evidence Board</h2>
+    <p class="section__lede">Pinned, cross-referenced and strung together — the tools and techniques employed in every investigation.</p>
+
+    <div class="board" role="img" aria-label="Evidence board connecting the suspect to eleven technical skills: JavaScript, TypeScript, Python, React, Node.js, TensorFlow, PostgreSQL, Docker, AWS, GraphQL and Figma">
+      <svg class="board__strings" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M500,280 L120,84"/>
+        <path d="M500,280 L300,45"/>
+        <path d="M500,280 L520,34"/>
+        <path d="M500,280 L740,67"/>
+        <path d="M500,280 L880,168"/>
+        <path d="M500,280 L850,325"/>
+        <path d="M500,280 L700,459"/>
+        <path d="M500,280 L450,493"/>
+        <path d="M500,280 L200,448"/>
+        <path d="M500,280 L60,308"/>
+        <path d="M500,280 L100,190"/>
+      </svg>
+
+      <div class="pin pin--hub">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="18" cy="18" r="11" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="26" y1="26" x2="35" y2="35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span class="pin__label">The&nbsp;Suspect<br><small>Full-Stack Detective</small></span>
+      </div>
+
+      <div class="pin pin--1">JavaScript</div>
+      <div class="pin pin--2">TypeScript</div>
+      <div class="pin pin--3">Python</div>
+      <div class="pin pin--4">React</div>
+      <div class="pin pin--5">Node.js</div>
+      <div class="pin pin--6">TensorFlow</div>
+      <div class="pin pin--7">PostgreSQL</div>
+      <div class="pin pin--8">Docker</div>
+      <div class="pin pin--9">AWS</div>
+      <div class="pin pin--10">GraphQL</div>
+      <div class="pin pin--11">Figma</div>
+    </div>
+
+    <!-- Simplified evidence list for narrow screens / non-visual browsing -->
+    <ul class="skills-list">
+      <li>JavaScript</li><li>TypeScript</li><li>Python</li><li>React</li><li>Node.js</li>
+      <li>TensorFlow</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>GraphQL</li><li>Figma</li>
+    </ul>
+  </section>
+
+  <!-- ================= CASE FILES / PROJECTS ================= -->
+  <section class="section" id="files">
+    <h2 class="section__title"><span class="section__eyebrow">Exhibit C</span>Case Files Solved</h2>
+
+    <div class="files">
+      <article class="folder">
+        <div class="folder__tab">Case No. 01</div>
+        <div class="folder__stamp">Solved</div>
+        <div class="folder__body">
+          <h3>The Vanishing Ledger</h3>
+          <p>A financial institution's transaction logs concealed a pattern no auditor could name. Built an anomaly-detection engine that flags fraudulent transfers in real time, cutting investigation time from days to minutes.</p>
+          <ul class="tags"><li>Python</li><li>TensorFlow</li><li>FastAPI</li><li>React</li></ul>
+          <div class="folder__links">
+            <a href="#">Repository&nbsp;↗</a>
+            <a href="#">Live&nbsp;Demo&nbsp;↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="folder">
+        <div class="folder__tab">Case No. 02</div>
+        <div class="folder__stamp">Solved</div>
+        <div class="folder__body">
+          <h3>Whisper of Baker Street</h3>
+          <p>Teams scattered across a hackathon venue needed a secure, low-latency way to compare notes. Delivered an end-to-end encrypted chat and file-drop tool that survives flaky conference Wi-Fi.</p>
+          <ul class="tags"><li>Node.js</li><li>WebSockets</li><li>PostgreSQL</li><li>React</li></ul>
+          <div class="folder__links">
+            <a href="#">Repository&nbsp;↗</a>
+            <a href="#">Live&nbsp;Demo&nbsp;↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="folder">
+        <div class="folder__tab">Case No. 03</div>
+        <div class="folder__stamp">Solved</div>
+        <div class="folder__body">
+          <h3>The Hound Tracker</h3>
+          <p>A field-logistics team was losing assets across a sprawling campus. Shipped a live map dashboard with geofenced alerts, turning a moor full of missing hounds into a single glance.</p>
+          <ul class="tags"><li>React&nbsp;Native</li><li>Firebase</li><li>Mapbox</li></ul>
+          <div class="folder__links">
+            <a href="#">Repository&nbsp;↗</a>
+            <a href="#">Live&nbsp;Demo&nbsp;↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= COMMENDATIONS / ACHIEVEMENTS ================= -->
+  <section class="section section--dark" id="commendations">
+    <h2 class="section__title"><span class="section__eyebrow">Exhibit D</span>Commendations from the Yard</h2>
+
+    <div class="medals">
+      <div class="medal">
+        <svg class="medal__badge" viewBox="0 0 80 100" aria-hidden="true">
+          <path d="M40 4 L60 20 L52 42 L28 42 L20 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="40" cy="60" r="26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="40" y="68" text-anchor="middle" font-size="22" fill="currentColor" font-family="serif">1</text>
+        </svg>
+        <h3>First Place</h3>
+        <p>HackLondon 2025 — Best Overall Solution</p>
+      </div>
+
+      <div class="medal">
+        <svg class="medal__badge" viewBox="0 0 80 100" aria-hidden="true">
+          <path d="M40 4 L60 20 L52 42 L28 42 L20 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="40" cy="60" r="26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M28 60l8 8 16-18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Best Use of AI</h3>
+        <p>TechCrunch Disrupt Hackathon, 2025</p>
+      </div>
+
+      <div class="medal">
+        <svg class="medal__badge" viewBox="0 0 80 100" aria-hidden="true">
+          <path d="M40 4 L60 20 L52 42 L28 42 L20 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="40" cy="60" r="26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M40 46v28M28 60h24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <h3>People's Choice</h3>
+        <p>DevFest Hack Night, 2024</p>
+      </div>
+
+      <div class="medal">
+        <svg class="medal__badge" viewBox="0 0 80 100" aria-hidden="true">
+          <path d="M40 4 L60 20 L52 42 L28 42 L20 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="40" cy="60" r="26" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="40" y="68" text-anchor="middle" font-size="16" fill="currentColor" font-family="serif">12</text>
+        </svg>
+        <h3>12 Cases Closed</h3>
+        <p>Hackathons entered since 2022</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IRREGULARS / TEAM ================= -->
+  <section class="section" id="irregulars">
+    <h2 class="section__title"><span class="section__eyebrow">Exhibit E</span>The Baker Street Irregulars</h2>
+    <p class="section__lede">No case is solved alone. The associates who worked this one.</p>
+
+    <div class="irregulars">
+      <div class="associate">
+        <div class="associate__avatar">A.H.</div>
+        <h3>Ada Hartley</h3>
+        <p>Backend Investigator</p>
+      </div>
+      <div class="associate">
+        <div class="associate__avatar">M.O.</div>
+        <h3>Miles Okoro</h3>
+        <p>Design Detective</p>
+      </div>
+      <div class="associate">
+        <div class="associate__avatar">P.S.</div>
+        <h3>Priya Sen</h3>
+        <p>Data &amp; Machine Learning</p>
+      </div>
+    </div>
+  </section>
+
+  
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 class="footer-heading">Address</h4>
+      <p class="footer-text">Germany — 785 15th Street, Office<br>478 Berlin, De 81566</p>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-heading">Say Hello</h4>
+      <a href="mailto:hello@codedcipher.com" class="footer-link">hello@codedcipher.com</a><br>
+      <a href="tel:+18408412569" class="footer-link">+1 840 841 25 69</a>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-heading">Social</h4>
+      <a href="#" class="footer-link">FACEBOOK</a><br>
+      <a href="#" class="footer-link">TWITTER</a><br>
+      <a href="#" class="footer-link">LINKEDIN</a><br>
+      <a href="#" class="footer-link">INSTAGRAM</a>
+    </div>
+
+    <div class="footer-col">
+      <h4 class="footer-heading">Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email" class="newsletter-input">
+        <button type="submit" class="newsletter-btn">&#8594;</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 The Coded Cipher. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+<script src="site-forms.js"></script>
+</body>
+</html>

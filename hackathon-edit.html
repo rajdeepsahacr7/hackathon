@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+  <title>Edit Hackathon | The Coded Cipher</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="profile-build.css">
+  <link rel="stylesheet" href="hackathon-create.css">
+  <link rel="stylesheet" href="banner-upload.css">
+  <link rel="stylesheet" href="prizes-judges.css">
+  <link rel="stylesheet" href="hackathon-edit.css">
+  <script src="banner-upload.js" defer></script>
+  <script src="prizes-judges.js" defer></script>
+  <script src="hackathon-edit.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+
+<nav class="sa-navbar">
+  <div class="sa-nav-spacer">
+    <a href="index.html" class="sh-brand" aria-label="The Coded Cipher — home">
+      <svg class="sh-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="2"/>
+        <path d="M19.3 19.3 27.5 27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.75">
+          <path d="M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6"/>
+        </g>
+      </svg>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">The Coded Cipher</span>
+        <span class="sh-brand-sub">221B &middot; Estd. 1887</span>
+      </span>
+    </a>
+  </div>
+  <div class="sa-nav-links">
+    <a href="index.html">Home</a>
+    <a href="organise_hackathon.html">My Cases</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </div>
+  <div class="sa-nav-user">
+    <span class="sa-nav-avatar" id="saNavAvatar">&hellip;</span>
+    <span class="sa-nav-name" id="saNavName">&hellip;</span>
+    <a href="#" id="adminLogoutLink" style="margin-left:14px; font-size:0.75rem; letter-spacing:0.08em; opacity:0.75;">LOGOUT</a>
+  </div>
+</nav>
+
+<div class="hc-top-row">
+  <div class="he-title-wrap">
+    <p class="section-eyebrow he-eyebrow">— Case File —</p>
+    <h1 class="he-heading" id="editTitle">Editing Case&hellip;</h1>
+  </div>
+  <a href="organise_hackathon.html" class="hc-ghost-link">Back to My Cases</a>
+</div>
+
+<div class="hc-panel" id="editPanel">
+
+  <p class="he-error" id="editError" style="display:none;"></p>
+
+  <p class="hc-section-label first">Basics</p>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="hackathonName">Name of Hackathon</label>
+    <input type="text" id="hackathonName" name="hackathonName" class="pb-input">
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="hackathonAbout">About Hackathon</label>
+    <textarea id="hackathonAbout" name="hackathonAbout" class="pb-input hc-textarea-large"></textarea>
+  </div>
+
+  <div class="hc-field-group hc-banner-group" id="bannerWidget">
+    <span class="hc-field-label">Card Image</span>
+    <p class="hc-field-hint">
+      This sits behind this hackathon&rsquo;s card on the homepage and the Cases list,
+      and behind the header on its details page. JPG, PNG, WebP, or GIF &mdash; up to 4 MB.
+      A wide image (roughly 16:9, 1200&nbsp;&times;&nbsp;675 or larger) looks best; the card
+      crops to fill, so keep anything important near the middle. Changes here apply
+      as soon as the upload finishes &mdash; you don&rsquo;t need to press Save Changes.
+    </p>
+
+    <div class="bn-preview" id="bannerPreview" data-empty="true">
+      <span class="bn-preview-empty">
+        No image yet &mdash; drop one here, or use the button below.
+        Without one the card falls back to the default parchment look.
+      </span>
+    </div>
+
+    <div class="bn-actions">
+      <button type="button" class="bn-btn" id="bannerChooseBtn">Choose image</button>
+      <button type="button" class="bn-btn bn-btn-danger" id="bannerRemoveBtn" hidden>Remove image</button>
+    </div>
+
+    <input type="file" id="bannerFile" class="bn-file"
+           accept="image/jpeg,image/png,image/webp,image/gif">
+    <input type="hidden" id="bannerUrl" name="bannerUrl">
+
+    <p class="bn-status" id="bannerStatus" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="status">Status</label>
+    <select id="status" name="status" class="pb-input">
+      <option value="draft">Draft &mdash; hidden from the public list</option>
+      <option value="published">Published &mdash; visible and open</option>
+      <option value="closed">Closed &mdash; visible but archived</option>
+    </select>
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="mode">Mode</label>
+    <select id="mode" name="mode" class="pb-input">
+      <option value="online">Online</option>
+      <option value="offline">In person</option>
+      <option value="hybrid">Hybrid</option>
+    </select>
+  </div>
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="venue">Venue (if in person)</label>
+    <input type="text" id="venue" name="venue" class="pb-input">
+  </div>
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="teamMin">Minimum team size</label>
+    <input type="number" min="1" max="20" id="teamMin" name="teamMin" class="pb-input">
+  </div>
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="teamMax">Maximum team size</label>
+    <input type="number" min="1" max="20" id="teamMax" name="teamMax" class="pb-input">
+  </div>
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="durationHours">Duration (hours)</label>
+    <input type="number" min="1" max="720" id="durationHours" name="durationHours" class="pb-input">
+  </div>
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="seats">Seats available</label>
+    <input type="number" min="1" max="10000" id="seats" name="seats" class="pb-input">
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="applicationStart">Begining of application</label>
+    <input type="date" id="applicationStart" name="applicationStart" class="pb-input">
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="applicationEnd">Closing of application</label>
+    <input type="date" id="applicationEnd" name="applicationEnd" class="pb-input">
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="hackathonStart">Begining of hackathon</label>
+    <input type="date" id="hackathonStart" name="hackathonStart" class="pb-input">
+  </div>
+
+  <div class="hc-field-group">
+    <label class="hc-field-label" for="hackathonEnd">Closing of hackathon</label>
+    <input type="date" id="hackathonEnd" name="hackathonEnd" class="pb-input">
+  </div>
+
+  <p class="hc-section-label">Application form fields</p>
+
+  <p class="hc-section-label" style="font-size:0.95rem; opacity:0.7; margin-top:-30px;">About</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldFullName" name="fieldFullName" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">First and last name</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldBio" name="fieldBio" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Bio</span>
+    </label>
+  </div>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldGender" name="fieldGender" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Gender</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label" style="font-size:0.95rem; opacity:0.7;">Experience</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldDomainExpertise" name="fieldDomainExpertise" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Domain Expertise</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldSkills" name="fieldSkills" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Skills</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label" style="font-size:0.95rem; opacity:0.7;">Links</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldGithub" name="fieldGithub" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Github</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldLinkedin" name="fieldLinkedin" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Linkedin</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label" style="font-size:0.95rem; opacity:0.7;">Contact</p>
+  <div class="hc-toggle-row">
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldPhone" name="fieldPhone" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Phone number</span>
+    </label>
+    <label class="hc-toggle-item">
+      <input type="checkbox" id="fieldEmail" name="fieldEmail" class="hc-toggle-checkbox">
+      <span class="hc-toggle-box"></span>
+      <span class="hc-toggle-label-text">Email address</span>
+    </label>
+  </div>
+
+  <p class="hc-section-label">Prizes</p>
+  <div id="pjPrizes"></div>
+
+  <p class="hc-section-label">Judges</p>
+  <div id="pjJudges"></div>
+
+  <div class="hc-bottom-nav">
+    <a href="organise_hackathon.html" class="hc-nav-btn">Cancel</a>
+    <a href="#" class="hc-nav-btn" id="saveChangesBtn">Save Changes</a>
+  </div>
+
+</div>
+
+</body>
+</html>

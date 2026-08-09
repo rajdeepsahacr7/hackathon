@@ -1,0 +1,30 @@
+/* =========================================================
+   View Registration page — additions on top of admin-detail.css,
+   superadmin.css, hackathon-apply.css and profile.css.
+   ========================================================= */
+
+.vr-skills-row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.vr-skill-tag {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 3px;
+  background: #322a1a;
+  color: #E2E2E2;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 16px 30px;
+}
+
+.ad-input-underline {
+  text-decoration: underline;
+}
+
+/* Read-only variant of the link rows from hackathon-apply.css */
+.vr-link-row .ha-link-input {
+  cursor: default;
+}

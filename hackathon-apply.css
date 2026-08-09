@@ -1,0 +1,134 @@
+/* Application form field styles. Link AFTER style.css + profile.css. */
+.ha-field-row   { display: flex; gap: 35px; }
+.ha-field-row .ha-field-group { flex: 1; }
+.ha-field-group { margin-bottom: 38px; }
+.ha-field-label {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+.ha-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--soot-850);
+  border: 1px solid var(--brass-900);
+  border-radius: 3px;
+  padding: 18px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #E2E2E2;
+  resize: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.ha-input:focus {
+  outline: none;
+  border-color: #f2ead9;
+  box-shadow: 0 0 0 3px rgba(186, 157, 89, 0.18);
+}
+.ha-input:disabled { opacity: 0.6; cursor: not-allowed; }
+.ha-textarea-large { height: 180px; border-radius: var(--radius); line-height: 1.6; }
+/* ---------- Skills ---------- */
+.ha-skills-question {
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.15rem;
+  margin: 0 0 25px;
+}
+.ha-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+.ha-toggle-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--gold-accent);
+  border-radius: 30px;
+  padding: 16px 25px;
+  background: #241d12;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+.ha-toggle-item:hover { background: #2e2417; transform: translateY(-2px); }
+.ha-toggle-checkbox { position: absolute; opacity: 0; width: 0; height: 0; }
+.ha-toggle-box {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: #c9b98a;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.25s ease;
+}
+.ha-toggle-box::after { content: ""; color: #2a1f14; font-weight: bold; font-size: 1.05rem; }
+.ha-toggle-checkbox:checked + .ha-toggle-box::after { content: "\2713"; }
+.ha-toggle-checkbox:focus-visible + .ha-toggle-box { outline: 2px solid #f2ead9; outline-offset: 3px; }
+.ha-toggle-label-text { font-family: var(--font-body); color: #E2E2E2; font-size: 1rem; }
+/* ---------- Link rows ---------- */
+.ha-link-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--gold-accent);
+  border-radius: 3px;
+  background: #241d12;
+  padding: 12px 22px;
+  margin-bottom: 22px;
+}
+.ha-link-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-body);
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--brass-100);
+  background: radial-gradient(circle at 34% 28%, var(--soot-600), var(--soot-800));
+  border: 1px solid var(--brass-900);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.ha-link-prefix {
+  font-family: var(--font-mono);
+  color: rgba(226, 226, 226, 0.6);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.ha-link-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: #E2E2E2;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+.ha-link-input:focus { outline: none; }
+.ha-link-input::placeholder { color: rgba(226, 226, 226, 0.35); }
+/* ---------- Submit ---------- */
+.ha-submit-btn {
+  border: 1px solid var(--gold-accent);
+  border-radius: 6px;
+  background: transparent;
+  color: #E2E2E2;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  padding: 15px 45px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.ha-submit-btn:hover:not(:disabled) { background: var(--gold-accent); color: #14100a; }
+.ha-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ha-submit-feedback {
+  font-family: var(--font-mono);
+  color: #7fbf7f;
+  font-size: 0.85rem;
+}
+@media (max-width: 700px) {
+  .ha-field-row { flex-direction: column; gap: 0; }
+  .ha-link-prefix { display: none; }
+}

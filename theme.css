@@ -1,0 +1,1352 @@
+/* =========================================================================
+   theme.css — The Coded Cipher
+   The single source of truth for the site's look: palette, type scale,
+   CSS-drawn textures, and the handful of shared components (logo, seal,
+   brass button, parchment panel, engraved rule).
+
+   Loaded FIRST on every page, before any page-specific stylesheet, so a
+   page can still override a token locally if it genuinely needs to.
+
+   Art direction: a gaslit Victorian case file. Soot-dark surfaces lit from
+   one warm source, brass and gold for structure and emphasis, oxblood for
+   anything destructive or urgent, and aged parchment reserved for the
+   surfaces you actually write on — forms, dossiers, prize cards. Every
+   texture here is drawn in CSS or inline SVG; the project ships no image
+   files, so nothing can 404.
+   ========================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------
+     1. Palette
+     --------------------------------------------------------------------- */
+
+  /* Soot — the dark surfaces, coolest at the back, warming as they rise. */
+  --soot-900: #0a0806;   /* page base, the back of the room */
+  --soot-850: #0f0c08;
+  --soot-800: #14100a;   /* raised panel */
+  --soot-700: #1c1610;   /* card */
+  --soot-600: #241d12;   /* hover / input well */
+  --soot-500: #322a1a;   /* hairline borders */
+  --soot-400: #453a24;   /* stronger borders */
+
+  /* Brass — structure, rules, emphasis. --brass-500 is the historic gold. */
+  --brass-900: #4a3d24;
+  --brass-700: #8a7440;
+  --brass-500: #ba9d59;
+  --brass-300: #d4af6a;
+  --brass-100: #e8c97a;
+
+  /* Gaslight — the single warm light source. Used for glows, never fills. */
+  --gaslight: #f0b45a;
+  --gaslight-glow: rgba(240, 180, 90, 0.16);
+  --gaslight-haze: rgba(240, 180, 90, 0.06);
+
+  /* Oxblood — destructive actions, errors, the wax seal, urgency. */
+  --oxblood-700: #4a141d;
+  --oxblood-500: #7a2331;
+  --oxblood-300: #a8404c;
+
+  /* Verdigris — the one cool accent. Success, "open", aged copper. */
+  --verdigris: #6f9b8a;
+  --verdigris-dark: #35564c;
+
+  /* Parchment — surfaces you write on. */
+  --parchment-100: #f5ecd6;
+  --parchment-200: #ecdfc0;
+  --parchment-300: #dccfa8;
+  --parchment-edge: #cdb98a;
+
+  /* Ink — type on parchment. */
+  --ink-900: #1c140d;
+  --ink-700: #2a2014;
+  --ink-500: #5c4a30;
+  --ink-300: #8a7757;
+
+  /* Type on soot. */
+  --text-hi: #efe7d6;
+  --text: #e2e2e2;
+  --text-mid: #b3a992;
+  --text-low: #877e6d;
+
+  --fog: #8fa39c;
+
+  /* ---------------------------------------------------------------------
+     2. Type
+     Four voices, each with one job:
+       display — engraved Roman caps. Plaques, heroes, section headings.
+       body    — the reading face. Paragraphs, form values, anything long.
+       label   — a battered typewriter. Eyebrows, tags, buttons, table heads.
+       mono    — the case-note face. Hints, metadata, monospaced data.
+     --------------------------------------------------------------------- */
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-body: 'Libre Baskerville', Georgia, serif;
+  --font-label: 'Special Elite', 'Courier New', monospace;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+
+  --tracking-label: 0.18em;   /* typewriter labels need air */
+  --tracking-display: 0.02em;
+
+  /* ---------------------------------------------------------------------
+     3. Space, shape, depth, time
+     --------------------------------------------------------------------- */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --container: 1200px;
+  --max: 1120px;
+
+  /* Victorian print is square. Corners stay nearly sharp everywhere. */
+  --radius: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+
+  --hair: 1px solid var(--soot-500);
+  --hair-brass: 1px solid rgba(186, 157, 89, 0.28);
+
+  /* Light falls from above, so shadows are long and warm-tinted. */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.7);
+  --shadow-lamp: 0 0 40px var(--gaslight-glow);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 0.18s var(--ease);
+  --t: 0.28s var(--ease);
+  --t-slow: 0.55s var(--ease);
+
+  /* ---------------------------------------------------------------------
+     4. Textures — all drawn, none downloaded
+     --------------------------------------------------------------------- */
+
+  /* Film grain. Sits over dark surfaces so flat areas never look plastic. */
+  --tex-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.055'/%3E%3C/svg%3E");
+
+  /* Paper fibre. Coarser, warmer noise for parchment surfaces. */
+  --tex-fibre: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.035 0.7' numOctaves='5'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23f)' opacity='0.16'/%3E%3C/svg%3E");
+
+  /* Banknote engraving. Fine 45-degree hatch for headers and empty plates. */
+  --tex-engrave: repeating-linear-gradient(
+    45deg,
+    rgba(186, 157, 89, 0.055) 0 1px,
+    transparent 1px 7px
+  );
+
+  /* The same hatch crossed, for a denser guilloche on empty states. */
+  --tex-guilloche:
+    repeating-linear-gradient(45deg, rgba(186, 157, 89, 0.05) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(-45deg, rgba(186, 157, 89, 0.04) 0 1px, transparent 1px 8px);
+
+  /* Ruled ledger lines, for parchment panels that should read as a form. */
+  --tex-ruled: repeating-linear-gradient(
+    to bottom,
+    transparent 0 27px,
+    rgba(92, 74, 48, 0.13) 27px 28px
+  );
+
+  --z-nav: 100;
+  --z-modal: 400;
+}
+
+/* =========================================================================
+   Legacy aliases.
+   Four pages had grown their own private vocabularies (--void, --ink,
+   --claret, --gold-accent, --cream...) with slightly different hexes for
+   the same intent. Rather than rewrite thousands of references, the old
+   names now point at the canonical scale above — so every page shifts onto
+   one palette at once and stays there.
+   ========================================================================= */
+:root {
+  --gold-accent: var(--brass-500);
+  --cream: var(--parchment-100);
+
+  --void: var(--soot-900);
+  --void-2: var(--soot-700);
+
+  --parchment: var(--parchment-200);
+
+  --ink: var(--ink-900);
+  --ink-soft: var(--ink-500);
+
+  --brass: var(--brass-700);
+  --brass-dark: var(--brass-900);
+  --brass-light: var(--brass-300);
+  --brass-bright: var(--brass-300);
+
+  --burgundy: var(--oxblood-500);
+  --burgundy-dark: var(--oxblood-700);
+  --claret: var(--oxblood-500);
+
+  --font-type: var(--font-label);
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--soot-900);
+  /* One warm light high on the left, a cooler one far right, then grain over
+     the top. Fixed attachment so the room stays still while content scrolls. */
+  background-image:
+    var(--tex-grain),
+    radial-gradient(1100px 620px at 12% -8%, rgba(240, 180, 90, 0.07), transparent 70%),
+    radial-gradient(900px 700px at 96% 4%, rgba(111, 155, 138, 0.045), transparent 72%);
+  background-attachment: fixed, fixed, fixed;
+  background-size: 180px 180px, auto, auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+/* Headings speak in engraved caps. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--text-hi);
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+p {
+  line-height: 1.75;
+}
+
+a {
+  color: var(--brass-300);
+  text-decoration-color: rgba(186, 157, 89, 0.4);
+  text-underline-offset: 3px;
+  transition: color var(--t-fast);
+}
+
+a:hover {
+  color: var(--brass-100);
+}
+
+::selection {
+  background: rgba(240, 180, 90, 0.26);
+  color: var(--text-hi);
+}
+
+/* A visible, on-theme focus ring. The default blue halo would be the one
+   un-Victorian thing on the page, and several pages had removed outlines
+   entirely, which left keyboard users with nothing. */
+:focus-visible {
+  outline: 2px solid var(--gaslight);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* Brass scrollbar, so the chrome doesn't break the room either. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brass-900) var(--soot-850);
+}
+
+*::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--soot-850);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--brass-900);
+  border: 2px solid var(--soot-850);
+  border-radius: var(--radius-pill);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--brass-700);
+}
+
+/* =========================================================================
+   Shared components
+   ========================================================================= */
+
+/* ---------- The mark ----------
+   A magnifying glass whose lens holds a cipher grid. Drawn inline as SVG on
+   every page so it scales, inherits colour, and needs no image file. */
+.sh-mark {
+  display: block;
+  width: 1.9em;
+  height: 1.9em;
+  color: var(--brass-500);
+  flex: 0 0 auto;
+  transition: color var(--t), transform var(--t);
+}
+
+.sh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.sh-brand:hover .sh-mark {
+  color: var(--brass-100);
+  transform: rotate(-8deg);
+}
+
+.sh-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18em;
+}
+
+.sh-brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.07em;
+  color: var(--text-hi);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sh-brand-sub {
+  font-family: var(--font-label);
+  font-size: 0.5rem;
+  letter-spacing: 0.3em;
+  color: var(--brass-700);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---------- Eyebrow: a typewritten label between two engraved rules ---------- */
+.sh-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brass-500);
+  margin: 0 0 18px;
+}
+
+.sh-eyebrow::before,
+.sh-eyebrow::after {
+  content: "";
+  height: 1px;
+  width: clamp(24px, 6vw, 70px);
+  background: linear-gradient(90deg, transparent, var(--brass-900), transparent);
+}
+
+/* ---------- Divider: a brass rule with a diamond at its centre ---------- */
+.sh-rule {
+  position: relative;
+  height: 1px;
+  border: 0;
+  margin: 44px auto;
+  max-width: 340px;
+  background: linear-gradient(90deg, transparent, var(--brass-900) 22%, var(--brass-700) 50%, var(--brass-900) 78%, transparent);
+}
+
+.sh-rule::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  translate: -50% -50%;
+  rotate: 45deg;
+  background: var(--soot-900);
+  border: 1px solid var(--brass-700);
+}
+
+/* ---------- Brass button ---------- */
+.sh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 30px;
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--soot-900);
+  background-image: linear-gradient(175deg, var(--brass-300), var(--brass-500) 55%, var(--brass-700));
+  border: 1px solid var(--brass-300);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: filter var(--t-fast), box-shadow var(--t-fast), translate var(--t-fast);
+}
+
+.sh-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-lamp);
+  translate: 0 -1px;
+  color: var(--soot-900);
+}
+
+.sh-btn:active {
+  translate: 0 0;
+  filter: brightness(0.96);
+}
+
+.sh-btn--ghost {
+  color: var(--brass-300);
+  background: transparent;
+  background-image: var(--tex-engrave);
+  border-color: var(--brass-900);
+}
+
+.sh-btn--ghost:hover {
+  color: var(--brass-100);
+  border-color: var(--brass-700);
+  box-shadow: none;
+  background-color: rgba(186, 157, 89, 0.06);
+}
+
+.sh-btn--danger {
+  color: var(--parchment-100);
+  background-image: linear-gradient(175deg, var(--oxblood-300), var(--oxblood-500) 60%, var(--oxblood-700));
+  border-color: var(--oxblood-300);
+}
+
+/* ---------- Panel: a raised soot surface with a hairline and a lit top edge ---------- */
+.sh-panel {
+  position: relative;
+  background-color: var(--soot-800);
+  background-image: var(--tex-engrave);
+  border: var(--hair-brass);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+/* The light source catches the top edge of anything raised. */
+.sh-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 180, 90, 0.3), transparent);
+}
+
+/* ---------- Parchment: for surfaces you write on ---------- */
+.sh-parchment {
+  position: relative;
+  color: var(--ink-900);
+  background-color: var(--parchment-200);
+  background-image:
+    var(--tex-fibre),
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 250, 235, 0.75), transparent 60%),
+    radial-gradient(60% 50% at 100% 100%, rgba(140, 110, 60, 0.16), transparent 70%);
+  background-size: 220px 220px, auto, auto;
+  background-blend-mode: multiply, normal, normal;
+  border: 1px solid var(--parchment-edge);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg), inset 0 0 60px rgba(140, 110, 60, 0.14);
+}
+
+.sh-parchment h1,
+.sh-parchment h2,
+.sh-parchment h3 {
+  color: var(--ink-900);
+}
+
+/* Corner brackets, the way an evidence photo is mounted. */
+.sh-corners::before,
+.sh-corners::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid currentColor;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.sh-corners::before {
+  top: 10px;
+  left: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.sh-corners::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* ---------- Wax seal ---------- */
+.sh-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255, 232, 214, 0.92);
+  background-image:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.3), transparent 42%),
+    radial-gradient(circle at 70% 78%, rgba(0, 0, 0, 0.42), transparent 55%),
+    linear-gradient(150deg, var(--oxblood-300), var(--oxblood-500) 45%, var(--oxblood-700));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  /* An irregular edge, because wax never sets round. */
+  clip-path: polygon(
+    50% 0%, 66% 4%, 79% 12%, 91% 24%, 96% 38%, 100% 52%,
+    95% 66%, 87% 79%, 74% 90%, 60% 97%, 45% 100%, 31% 94%,
+    18% 86%, 8% 74%, 2% 60%, 0% 45%, 4% 30%, 13% 17%, 25% 7%, 38% 2%
+  );
+}
+
+/* ---------- Engraved plate ----------
+   Stands in wherever a photograph would have gone. The project ships no
+   image files, so instead of a broken-image icon these slots get a drawn
+   guilloche plate with a monogram — theme.js swaps any failed <img> for one. */
+.sh-plate {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  overflow: hidden;
+  background-color: var(--soot-700);
+  background-image:
+    var(--tex-guilloche),
+    radial-gradient(80% 70% at 50% 0%, rgba(240, 180, 90, 0.1), transparent 70%);
+  border: 1px solid rgba(186, 157, 89, 0.2);
+  color: var(--brass-700);
+}
+
+.sh-plate::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(186, 157, 89, 0.16);
+  pointer-events: none;
+}
+
+.sh-plate-mark {
+  width: 34%;
+  max-width: 74px;
+  min-width: 30px;
+  opacity: 0.5;
+}
+
+.sh-plate-label {
+  position: absolute;
+  bottom: 9px;
+  font-family: var(--font-label);
+  font-size: 0.52rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass-900);
+}
+
+/* ---------- Fog ----------
+   Two slow, counter-drifting bands of haze. Sits behind hero content and
+   above the backdrop, so headings read through a genuine London murk. */
+.sh-fog {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sh-fog::before,
+.sh-fog::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  width: 200%;
+  height: 70%;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.sh-fog::before {
+  bottom: -12%;
+  background-image:
+    radial-gradient(50% 60% at 22% 60%, rgba(196, 186, 170, 0.11), transparent 70%),
+    radial-gradient(46% 54% at 62% 48%, rgba(240, 180, 90, 0.075), transparent 72%),
+    radial-gradient(40% 50% at 88% 66%, rgba(196, 186, 170, 0.07), transparent 70%);
+  animation: sh-drift 52s linear infinite;
+}
+
+.sh-fog::after {
+  bottom: -22%;
+  height: 60%;
+  background-image:
+    radial-gradient(48% 56% at 34% 54%, rgba(143, 163, 156, 0.08), transparent 72%),
+    radial-gradient(44% 50% at 76% 60%, rgba(196, 186, 170, 0.075), transparent 70%);
+  animation: sh-drift 78s linear infinite reverse;
+}
+
+@keyframes sh-drift {
+  from {
+    transform: translate3d(-6%, 0, 0);
+  }
+  to {
+    transform: translate3d(6%, 0, 0);
+  }
+}
+
+/* ---------- Gaslight vignette ----------
+   Darkens the corners so every screen has a lit centre and a dark edge.
+   Non-interactive and fixed, layered above content but below the nav. */
+.sh-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    radial-gradient(130% 100% at 50% 0%, transparent 42%, rgba(0, 0, 0, 0.5) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================================
+   Utilities
+   ========================================================================= */
+
+.sh-shell {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sh-label {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--brass-500);
+}
+
+.sh-meta {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-low);
+}
+
+/* Screen-reader-only, for the icon-only controls scattered through the app. */
+.sh-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================================
+   Scenes — the hero art, drawn rather than photographed
+
+   The project ships no image files, so the heroes are built from layers:
+   a sky wash, two ranks of Victorian roofline (SVG paths generated once and
+   inlined here), a gas lamp's glow, rain, and fog on top. Depth comes from
+   the two skylines moving at different opacities and the light sitting
+   between them.
+   ========================================================================= */
+
+.sh-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background-color: #07090c;
+}
+
+/* --- the sky --- */
+.sh-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* the moon's cold wash, top right */
+    radial-gradient(46% 40% at 82% 6%, rgba(150, 172, 186, 0.16), transparent 68%),
+    /* sodium haze rising off the street */
+    radial-gradient(90% 62% at 42% 104%, rgba(240, 180, 90, 0.2), transparent 72%),
+    linear-gradient(180deg, #05070a 0%, #0a0d11 38%, #16130e 74%, #241a10 100%);
+}
+
+/* --- the rooftops ---
+   Two ranks: a paler one set back and shifted, a solid one in front. The near
+   rank is listed first because CSS paints the first background layer on top. */
+.sh-skyline {
+  position: absolute;
+  inset: auto 0 0;
+  height: 66%;
+  pointer-events: none;
+  background-repeat: repeat-x, repeat-x;
+  background-position: 0 bottom, 9% bottom;
+  background-size: 100% 100%, 138% 74%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 177 L7 177 L7 154 L18 154 L18 177 L31 177 L31 148 L42 148 L42 177 L55 177 L55 157 L66 157 L66 177 L73 177 L73 300 L73 127 L124 127 L124 97 L135 97 L135 127 L185 127 L185 300 L185 200 L239 200 L239 175 L250 175 L250 200 L304 200 L304 300 L304 176 L367 153 L430 176 L430 300 L430 142 L470 113 L511 142 L511 300 L511 226 L524 226 L524 197 L535 197 L535 226 L560 226 L560 209 L571 209 L571 226 L596 226 L596 201 L607 201 L607 226 L619 226 L619 300 L619 211 L641 211 L641 194 L652 194 L652 211 L673 211 L673 300 L673 172 L700 146 L727 172 L727 300 L727 168 L778 151 L830 168 L830 300 L830 120 L881 120 L881 100 L892 100 L892 120 L942 120 L942 300 L942 144 L950 144 L950 128 L961 128 L961 144 L976 144 L976 127 L987 127 L987 144 L1002 144 L1002 115 L1013 115 L1013 144 L1020 144 L1020 300 L1020 125 L1075 113 L1081 52 L1087 113 L1143 125 L1143 300 L1143 117 L1155 117 L1155 92 L1166 92 L1166 117 L1190 117 L1190 89 L1201 89 L1201 117 L1213 117 L1213 300 L1213 181 L1271 150 L1329 181 L1329 300 L1329 196 L1379 178 L1430 196 L1430 300 L1400 300 Z' fill='%23070906' opacity='1'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 211 L40 199 L46 156 L52 199 L93 211 L93 300 L93 125 L103 125 L103 110 L114 110 L114 125 L133 125 L133 95 L144 95 L144 125 L154 125 L154 300 L154 226 L193 197 L233 226 L233 300 L233 200 L263 171 L293 200 L293 300 L293 125 L317 125 L317 110 L328 110 L328 125 L352 125 L352 300 L352 156 L408 144 L414 90 L420 144 L477 156 L477 300 L477 159 L486 159 L486 132 L497 132 L497 159 L514 159 L514 141 L525 141 L525 159 L534 159 L534 300 L534 215 L549 215 L549 196 L560 196 L560 215 L589 215 L589 198 L600 198 L600 215 L629 215 L629 195 L640 195 L640 215 L655 215 L655 300 L655 218 L699 218 L699 203 L710 203 L710 218 L754 218 L754 300 L754 167 L768 167 L768 143 L779 143 L779 167 L807 167 L807 139 L818 139 L818 167 L832 167 L832 300 L832 112 L889 100 L895 41 L901 100 L958 112 L958 300 L958 129 L999 106 L1041 129 L1041 300 L1041 157 L1072 126 L1103 157 L1103 300 L1103 137 L1144 125 L1150 81 L1156 125 L1198 137 L1198 300 L1198 165 L1225 153 L1231 92 L1237 153 L1265 165 L1265 300 L1265 111 L1295 111 L1295 95 L1306 95 L1306 111 L1336 111 L1336 300 L1336 157 L1361 157 L1361 133 L1372 133 L1372 157 L1423 157 L1423 132 L1434 132 L1434 157 L1459 157 L1459 300 L1400 300 Z' fill='%230f1418' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* --- lit windows ---
+   A field of warm dots masked to the near roofline, so the light only ever
+   falls inside a building. Two grids at different pitches keep it from
+   reading as wallpaper, and the top fade puts the brightest rooms lowest. */
+.sh-windows {
+  position: absolute;
+  inset: auto 0 0;
+  height: 66%;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(240, 180, 90, 0.62) 0 0.9px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 214, 150, 0.34) 0 0.8px, transparent 1.4px);
+  /* Deliberately mismatched pitches — a shared factor would line the two
+     grids up and the roofs would read as graph paper. */
+  background-size: 47px 53px, 71px 39px;
+  background-position: 9px 13px, 34px 6px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 177 L7 177 L7 154 L18 154 L18 177 L31 177 L31 148 L42 148 L42 177 L55 177 L55 157 L66 157 L66 177 L73 177 L73 300 L73 127 L124 127 L124 97 L135 97 L135 127 L185 127 L185 300 L185 200 L239 200 L239 175 L250 175 L250 200 L304 200 L304 300 L304 176 L367 153 L430 176 L430 300 L430 142 L470 113 L511 142 L511 300 L511 226 L524 226 L524 197 L535 197 L535 226 L560 226 L560 209 L571 209 L571 226 L596 226 L596 201 L607 201 L607 226 L619 226 L619 300 L619 211 L641 211 L641 194 L652 194 L652 211 L673 211 L673 300 L673 172 L700 146 L727 172 L727 300 L727 168 L778 151 L830 168 L830 300 L830 120 L881 120 L881 100 L892 100 L892 120 L942 120 L942 300 L942 144 L950 144 L950 128 L961 128 L961 144 L976 144 L976 127 L987 127 L987 144 L1002 144 L1002 115 L1013 115 L1013 144 L1020 144 L1020 300 L1020 125 L1075 113 L1081 52 L1087 113 L1143 125 L1143 300 L1143 117 L1155 117 L1155 92 L1166 92 L1166 117 L1190 117 L1190 89 L1201 89 L1201 117 L1213 117 L1213 300 L1213 181 L1271 150 L1329 181 L1329 300 L1329 196 L1379 178 L1430 196 L1430 300 L1400 300 Z' fill='%23070906' opacity='1'/%3E%3C/svg%3E"), linear-gradient(to top, #000 12%, rgba(0, 0, 0, 0.45) 55%, transparent 88%);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 177 L7 177 L7 154 L18 154 L18 177 L31 177 L31 148 L42 148 L42 177 L55 177 L55 157 L66 157 L66 177 L73 177 L73 300 L73 127 L124 127 L124 97 L135 97 L135 127 L185 127 L185 300 L185 200 L239 200 L239 175 L250 175 L250 200 L304 200 L304 300 L304 176 L367 153 L430 176 L430 300 L430 142 L470 113 L511 142 L511 300 L511 226 L524 226 L524 197 L535 197 L535 226 L560 226 L560 209 L571 209 L571 226 L596 226 L596 201 L607 201 L607 226 L619 226 L619 300 L619 211 L641 211 L641 194 L652 194 L652 211 L673 211 L673 300 L673 172 L700 146 L727 172 L727 300 L727 168 L778 151 L830 168 L830 300 L830 120 L881 120 L881 100 L892 100 L892 120 L942 120 L942 300 L942 144 L950 144 L950 128 L961 128 L961 144 L976 144 L976 127 L987 127 L987 144 L1002 144 L1002 115 L1013 115 L1013 144 L1020 144 L1020 300 L1020 125 L1075 113 L1081 52 L1087 113 L1143 125 L1143 300 L1143 117 L1155 117 L1155 92 L1166 92 L1166 117 L1190 117 L1190 89 L1201 89 L1201 117 L1213 117 L1213 300 L1213 181 L1271 150 L1329 181 L1329 300 L1329 196 L1379 178 L1430 196 L1430 300 L1400 300 Z' fill='%23070906' opacity='1'/%3E%3C/svg%3E"), linear-gradient(to top, #000 12%, rgba(0, 0, 0, 0.45) 55%, transparent 88%);
+  -webkit-mask-size: 100% 100%, 100% 100%;
+  mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation: sh-windows 9s steps(1) infinite;
+}
+
+/* A couple of rooms go dark and come back, on no particular schedule. */
+@keyframes sh-windows {
+  0%, 100% { opacity: 0.55; }
+  35%      { opacity: 0.44; }
+  70%      { opacity: 0.6; }
+}
+
+/* --- the lamp ---
+   One warm source, low left, with a physical post so the glow has a reason. */
+.sh-lamp {
+  position: absolute;
+  left: 13%;
+  bottom: 0;
+  width: 3px;
+  height: 40%;
+  background: linear-gradient(180deg, #14100a, #05070a);
+  pointer-events: none;
+}
+
+.sh-lamp::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  width: 15px;
+  height: 20px;
+  translate: -50% 0;
+  /* the lantern: a tapered glass box, brightest at its heart */
+  background: radial-gradient(circle at 50% 55%, var(--gaslight), rgba(240, 180, 90, 0.5) 55%, rgba(120, 80, 30, 0.5));
+  clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+  box-shadow: 0 0 14px 3px rgba(240, 180, 90, 0.5);
+}
+
+.sh-lamp::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  width: 420px;
+  height: 420px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 180, 90, 0.22), rgba(240, 180, 90, 0.07) 38%, transparent 68%);
+  animation: sh-flicker 5.5s ease-in-out infinite;
+}
+
+/* Gas jets are never steady. A slow, shallow wander, not a strobe. */
+@keyframes sh-flicker {
+  0%, 100% { opacity: 0.9; }
+  22%      { opacity: 1; }
+  47%      { opacity: 0.78; }
+  61%      { opacity: 0.97; }
+  83%      { opacity: 0.84; }
+}
+
+/* --- rain ---
+   Fine near-vertical streaks. Two layers at different speeds and angles so
+   it reads as depth rather than as a moving texture. */
+.sh-rain {
+  position: absolute;
+  inset: -20% 0 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(97deg, rgba(200, 214, 224, 0.16) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(93deg, rgba(200, 214, 224, 0.1) 0 1px, transparent 1px 9px);
+  background-size: 100px 110px, 140px 170px;
+  animation: sh-rain-a 0.7s linear infinite, sh-rain-b 1.15s linear infinite;
+}
+
+@keyframes sh-rain-a { to { background-position-y: 110px, 0; } }
+@keyframes sh-rain-b { to { background-position-y: 0, 170px; } }
+
+/* --- variants --- */
+
+/* The study: no sky, no rain. Firelight on panelling, and pipe smoke. */
+.sh-scene--study::before {
+  background-image:
+    radial-gradient(38% 46% at 24% 84%, rgba(240, 140, 60, 0.26), transparent 70%),
+    radial-gradient(60% 50% at 68% 22%, rgba(240, 180, 90, 0.1), transparent 72%),
+    linear-gradient(180deg, #14100a 0%, #1c150d 55%, #0b0806 100%);
+}
+
+.sh-scene--study .sh-skyline {
+  /* panelling instead of rooftops: tall boards, lit from the fire */
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0 2px, transparent 2px 74px),
+    repeating-linear-gradient(90deg, rgba(186, 157, 89, 0.05) 0 1px, transparent 1px 74px);
+  background-size: auto, auto;
+  background-position: 0 0, 3px 0;
+  opacity: 0.85;
+}
+
+/* The cipher wall: a rank of Dancing Men, the cipher from the Holmes story of
+   that name, with a reading glass sweeping slowly across it. */
+.sh-scene--cipher::before {
+  background-image:
+    radial-gradient(50% 44% at 50% 30%, rgba(111, 155, 138, 0.14), transparent 70%),
+    linear-gradient(180deg, #060a0a 0%, #0b1010 60%, #14100a 100%);
+}
+
+.sh-scene--cipher .sh-skyline {
+  height: 100%;
+  background-image: url("data:image/svg+xml,<svg xmlns='http%3A//www.w3.org/2000/svg' width='360' height='38' viewBox='0 0 360 38'><g fill='none' stroke='%23c9a961' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='9' r='4'/><path d='M11 13V24'/><path d='M3 22L11 16L19 12'/><path d='M11 24L18 31M11 24L4 31'/><circle cx='41' cy='9' r='4'/><path d='M41 13V24'/><path d='M33 22L41 16L49 22'/><path d='M41 24L48 33M41 24L34 33'/><circle cx='71' cy='9' r='4'/><path d='M71 13V24'/><path d='M63 22L71 16L79 12'/><path d='M71 24L78 33M71 24L64 33'/><path d='M78 33l5 -3 -5 -3'/><circle cx='101' cy='9' r='4'/><path d='M101 13V24'/><path d='M93 12L101 16L109 22'/><path d='M101 24L108 33M101 24L94 33'/><path d='M108 33l5 -3 -5 -3'/><circle cx='131' cy='9' r='4'/><path d='M131 13V24'/><path d='M123 12L131 16L139 12'/><path d='M131 24L138 31M131 24L124 31'/><circle cx='161' cy='9' r='4'/><path d='M161 13V24'/><path d='M153 22L161 16L169 22'/><path d='M161 24L154 33M161 24L168 33'/><circle cx='191' cy='9' r='4'/><path d='M191 13V24'/><path d='M183 12L191 16L199 12'/><path d='M191 24L184 33M191 24L198 33'/><path d='M184 33l5 -3 -5 -3'/><circle cx='221' cy='9' r='4'/><path d='M221 13V24'/><path d='M213 22L221 16L229 22'/><path d='M221 24L214 33M221 24L228 33'/><circle cx='251' cy='9' r='4'/><path d='M251 13V24'/><path d='M243 12L251 16L259 22'/><path d='M251 24L258 31M251 24L244 31'/><circle cx='281' cy='9' r='4'/><path d='M281 13V24'/><path d='M273 22L281 16L289 22'/><path d='M281 24L288 33M281 24L274 33'/><circle cx='311' cy='9' r='4'/><path d='M311 13V24'/><path d='M303 22L311 16L319 12'/><path d='M311 24L304 33M311 24L318 33'/><circle cx='341' cy='9' r='4'/><path d='M341 13V24'/><path d='M333 22L341 16L349 12'/><path d='M341 24L334 31M341 24L348 31'/></g></svg>"), url("data:image/svg+xml,<svg xmlns='http%3A//www.w3.org/2000/svg' width='360' height='38' viewBox='0 0 360 38'><g fill='none' stroke='%23c9a961' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='9' r='4'/><path d='M11 13V24'/><path d='M3 22L11 16L19 12'/><path d='M11 24L18 31M11 24L4 31'/><circle cx='41' cy='9' r='4'/><path d='M41 13V24'/><path d='M33 22L41 16L49 22'/><path d='M41 24L48 33M41 24L34 33'/><circle cx='71' cy='9' r='4'/><path d='M71 13V24'/><path d='M63 22L71 16L79 12'/><path d='M71 24L78 33M71 24L64 33'/><path d='M78 33l5 -3 -5 -3'/><circle cx='101' cy='9' r='4'/><path d='M101 13V24'/><path d='M93 12L101 16L109 22'/><path d='M101 24L108 33M101 24L94 33'/><path d='M108 33l5 -3 -5 -3'/><circle cx='131' cy='9' r='4'/><path d='M131 13V24'/><path d='M123 12L131 16L139 12'/><path d='M131 24L138 31M131 24L124 31'/><circle cx='161' cy='9' r='4'/><path d='M161 13V24'/><path d='M153 22L161 16L169 22'/><path d='M161 24L154 33M161 24L168 33'/><circle cx='191' cy='9' r='4'/><path d='M191 13V24'/><path d='M183 12L191 16L199 12'/><path d='M191 24L184 33M191 24L198 33'/><path d='M184 33l5 -3 -5 -3'/><circle cx='221' cy='9' r='4'/><path d='M221 13V24'/><path d='M213 22L221 16L229 22'/><path d='M221 24L214 33M221 24L228 33'/><circle cx='251' cy='9' r='4'/><path d='M251 13V24'/><path d='M243 12L251 16L259 22'/><path d='M251 24L258 31M251 24L244 31'/><circle cx='281' cy='9' r='4'/><path d='M281 13V24'/><path d='M273 22L281 16L289 22'/><path d='M281 24L288 33M281 24L274 33'/><circle cx='311' cy='9' r='4'/><path d='M311 13V24'/><path d='M303 22L311 16L319 12'/><path d='M311 24L304 33M311 24L318 33'/><circle cx='341' cy='9' r='4'/><path d='M341 13V24'/><path d='M333 22L341 16L349 12'/><path d='M341 24L334 31M341 24L348 31'/></g></svg>");
+  background-repeat: repeat, repeat;
+  background-size: 470px 118px, 292px 74px;
+  background-position: 0 0, 38px 20px;
+  opacity: 0.17;
+  /* Two masks: the wall fades at the edges, and it dims again behind the
+     centre so the title never has to fight the pattern. */
+  -webkit-mask-image:
+    radial-gradient(96% 88% at 50% 46%, #000 8%, transparent 72%),
+    radial-gradient(46% 42% at 50% 50%, rgba(0, 0, 0, 0.25), #000 68%);
+  mask-image:
+    radial-gradient(96% 88% at 50% 46%, #000 8%, transparent 72%),
+    radial-gradient(46% 42% at 50% 50%, rgba(0, 0, 0, 0.25), #000 68%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* The reading glass, travelling the wall and finding nothing conclusive. */
+.sh-scene--cipher .sh-fog::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  margin-top: -125px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 180, 90, 0.15), rgba(240, 180, 90, 0.045) 54%, transparent 71%);
+  box-shadow: inset 0 0 0 1px rgba(240, 180, 90, 0.13);
+  animation: sh-sweep 26s var(--ease) infinite;
+}
+
+@keyframes sh-sweep {
+  0%, 100% { transform: translateX(-16vw); }
+  50%      { transform: translateX(86vw); }
+}
+
+.sh-scene--cipher .sh-lamp,
+.sh-scene--study .sh-rain,
+.sh-scene--cipher .sh-rain,
+.sh-scene--study .sh-windows,
+.sh-scene--cipher .sh-windows {
+  display: none;
+}
+
+/* Indoors the lamp is closer, so its pool of light is wider and warmer. */
+.sh-scene--study .sh-lamp {
+  left: 22%;
+  height: 30%;
+}
+
+.sh-scene--study .sh-lamp::after {
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(240, 160, 70, 0.26), rgba(240, 180, 90, 0.09) 34%, transparent 66%);
+}
+
+/* Keep the weather still for anyone who asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .sh-rain,
+  .sh-lamp::after {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   PLATE VARIANTS
+   The site ships without artwork, so every image slot is drawn instead. Three
+   kinds carry three different meanings: a person is their initials, an
+   organisation is a crest, a case photograph is an evidence card.
+   ========================================================================== */
+
+/* --- a person --- */
+.sh-plate--initials {
+  border: none;
+  background:
+    var(--tex-engrave),
+    radial-gradient(circle at 34% 26%, var(--soot-600), var(--soot-850) 72%);
+  box-shadow: inset 0 0 0 var(--hair) var(--brass-900), var(--shadow-md);
+  gap: 0.55rem;
+}
+
+.sh-plate-initials {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  letter-spacing: 0.06em;
+  color: var(--brass-300);
+  line-height: 1;
+  text-shadow: 0 0 22px rgba(240, 180, 90, 0.28);
+}
+
+.sh-plate-name {
+  font-family: var(--font-label);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-low);
+  text-align: center;
+  padding: 0 0.6rem;
+}
+
+/* --- an organisation --- */
+.sh-plate--crest {
+  border: none;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  background:
+    var(--tex-guilloche),
+    radial-gradient(circle at 50% 38%, var(--soot-700), var(--soot-900) 74%);
+  box-shadow:
+    inset 0 0 0 var(--hair) var(--brass-700),
+    inset 0 0 0 4px var(--soot-900),
+    inset 0 0 0 5px var(--brass-900),
+    var(--shadow-sm);
+  gap: 0.3rem;
+}
+
+.sh-plate--crest .sh-plate-initials {
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  color: var(--brass-500);
+}
+
+.sh-plate--crest .sh-plate-name { display: none; }
+
+/* --- a case photograph ---
+   Corner brackets and a ruled field, the way an exhibit is mounted, with the
+   title on a band along the foot and an exhibit number in the corner. */
+.sh-plate--evidence {
+  background:
+    var(--tex-ruled),
+    linear-gradient(160deg, var(--soot-700), var(--soot-900));
+  border-color: var(--brass-900);
+  place-items: center;
+  padding-bottom: 2.6rem;
+}
+
+/* `inset` on the base rule sets all four offsets, so the brackets have to
+   release it before their own two can take effect. */
+.sh-plate--evidence::before,
+.sh-plate--evidence::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid var(--brass-500);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.sh-plate--evidence::before {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.sh-plate--evidence::after {
+  right: 12px;
+  bottom: 12px;
+  border-left: none;
+  border-top: none;
+}
+
+.sh-plate--evidence .sh-plate-mark {
+  opacity: 0.45;
+  max-width: 58px;
+}
+
+.sh-plate--evidence .sh-plate-label {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.7rem 1rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: none;
+  text-align: center;
+  color: var(--brass-300);
+  background: linear-gradient(to top, var(--soot-900) 55%, transparent);
+  border-top: var(--hair) solid rgba(186, 157, 89, 0.22);
+}
+
+/* The exhibit number is counted off the gallery rather than written into the
+   markup, so the sequence stays right if a card is added or removed. */
+.photo-gallery { counter-reset: exhibit; }
+
+.photo-gallery .sh-plate--evidence { counter-increment: exhibit; }
+
+.photo-gallery .sh-plate--evidence .sh-plate-mark::after { content: none; }
+
+.photo-gallery .sh-plate--evidence .sh-plate-label::before {
+  content: "Exhibit " counter(exhibit, upper-roman);
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-label);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-low);
+}
+
+/* A crest has to stay circular even when the original image rule set an
+   explicit height and an auto width, which would flatten it to an ellipse. */
+.sh-plate--crest.sponsor-logo {
+  width: 104px;
+  height: 104px;
+  filter: none;
+  opacity: 1;
+}
+
+.sponsors-row .sh-plate--crest { flex: 0 0 auto; }
+
+/* The base plate draws a square inner frame; on a crest that squares off the
+   circle, so it has to be re-cut to the same radius. */
+.sh-plate--crest::after {
+  inset: 8px;
+  border-radius: 50%;
+  border-color: rgba(186, 157, 89, 0.32);
+}
+
+.sh-plate--crest {
+  background:
+    var(--tex-guilloche),
+    radial-gradient(circle at 50% 34%, var(--soot-600), var(--soot-900) 76%);
+  box-shadow:
+    inset 0 0 0 1.5px var(--brass-700),
+    0 0 0 1px var(--soot-900),
+    var(--shadow-sm);
+}
+
+.sh-plate--crest .sh-plate-initials {
+  color: var(--brass-300);
+  text-shadow: 0 0 16px rgba(240, 180, 90, 0.22);
+}
+
+/* ---------- Load-order guard ----------
+   theme.css is loaded before every page stylesheet, so a later rule like
+   `.squad-img { display: block }` would otherwise beat `.sh-plate` at equal
+   specificity and collapse the substitute's layout. Qualifying the selector
+   with the element name outranks any single class without resorting to
+   !important. */
+div.sh-plate {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  height: 100%;
+  object-fit: initial;
+  transform: none;
+}
+
+div.sh-plate--crest {
+  display: grid;
+  width: 104px;
+  height: 104px;
+}
+
+/* The initials sit in a struck disc so a person reads as a portrait slot
+   rather than an empty panel. */
+div.sh-plate--initials .sh-plate-initials {
+  display: grid;
+  place-items: center;
+  width: clamp(76px, 42%, 132px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 32%, var(--soot-600), var(--soot-900) 78%);
+  box-shadow:
+    inset 0 0 0 1.5px var(--brass-700),
+    inset 0 0 30px rgba(0, 0, 0, 0.6),
+    var(--shadow-sm);
+}
+
+div.sh-plate--initials .sh-plate-name {
+  max-width: 88%;
+}
+
+/* ---------- Overflow guard ----------
+   User-supplied names, prize titles and links can be long unbroken strings.
+   Without this a single pasted URL pushes a card past the viewport. */
+.hd-prize-title,
+.hd-prize-award,
+.hd-prize-perks li,
+.hd-judge-name,
+.hd-judge-title,
+.hack-title,
+.hack-desc,
+.sh-plate-label,
+.sh-plate-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Some navs were built without a left-hand slot for the mark; this gives the
+   brand a home in them without disturbing the existing link layout. */
+.nav-brand-slot {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  padding-right: 2rem;
+}
+
+.navbar:has(.nav-brand-slot) .nav-links { margin-left: 0; }
+
+/* Nav scale was set independently on each page and drifted; one rule keeps
+   the bar the same height and weight everywhere. */
+.navbar .nav-links a,
+.navbar .nav-center a,
+.navbar .nav-user-name {
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.navbar .nav-user-name {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.09em;
+}
+
+/* A field is a ruled box waiting for ink: recessed, hairline brass, and a
+   gaslight glow when it takes focus. Page CSS still owns size and layout. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--brass-500);
+  box-shadow: 0 0 0 1px var(--brass-900), 0 0 14px -2px rgba(240, 180, 90, 0.28);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-low);
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  letter-spacing: 0.03em;
+}
+
+/* The wizard's step control reads as a set of tabbed file dividers. */
+.hc-tabs { border-radius: var(--radius) !important; }
+
+/* =========================================================
+   Responsive: the navs were built for a desk, never a pocket.
+   Below 860px the bar wraps instead of running off the page.
+   ========================================================= */
+
+@media (max-width: 860px) {
+  /* theme.css loads before the page stylesheets, so every selector here is
+     child-qualified to outrank the desktop `flex: 1` / `flex: 2` rules. */
+  nav.navbar,
+  nav.sa-navbar {
+    flex-wrap: wrap;
+    row-gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .navbar > .nav-left,
+  .navbar > .nav-brand-slot,
+  .sa-navbar > .sa-nav-spacer {
+    flex: 0 0 auto;
+    min-width: 0;
+    margin-right: 0;
+    padding-right: 10px;
+  }
+
+  .navbar > .nav-center,
+  .navbar > .nav-links,
+  .sa-navbar > .sa-nav-links {
+    order: 3;
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+    font-size: 0.85rem;
+  }
+
+  /* The right-hand controls take the remaining space so they sit on the same
+     line as the mark rather than wrapping beneath it. */
+  .navbar > .nav-right,
+  .navbar > .nav-user,
+  .sa-navbar > .sa-nav-user {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .navbar .nav-center a,
+  .navbar .nav-links a,
+  .sa-nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .sh-brand-sub { display: none; }
+  .sh-brand-name { font-size: 0.66rem; letter-spacing: 0.03em; }
+  .sh-mark { width: 20px; height: 20px; }
+  .sh-brand { gap: 7px; }
+
+  /* Two words fit a phone; the full name does not. */
+  @supports (hyphens: auto) {
+    .sh-brand-name { white-space: nowrap; }
+  }
+
+  /* The desktop rule centres the menu with a translate; on a phone it has to
+     hang off the right edge instead, so the translate is cancelled too. */
+  div.nav-login-menu {
+    right: 0;
+    left: auto;
+    min-width: 0;
+    max-width: min(84vw, 240px);
+    transform: translateY(-8px);
+  }
+
+  .nav-login-dropdown:hover div.nav-login-menu,
+  .nav-login-dropdown.open div.nav-login-menu { transform: translateY(0); }
+
+  /* The signup button was sized for a desktop bar; trimming it is what lets
+     the mark and the controls share the first line on a 375px screen. */
+  a.nav-signup {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+
+  .nav-login-btn { font-size: 0.85rem; }
+}
+
+@media (max-width: 520px) {
+  .nav-user-name,
+  .sa-nav-name {
+    max-width: 8.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Long single words in display headings should break rather than push the
+   page sideways. */
+.section-title,
+.section-title .gold,
+.section-title .cream,
+.hack-hero-heading,
+.hero-title,
+h1, h2 {
+  overflow-wrap: break-word;
+}
+
+/* The vignette is decoration; it must never create a scrollbar. */
+.sh-vignette { max-width: 100vw; overflow: hidden; }
+
+/* =========================================================
+   Nav wrap fix for the .nav-links pages
+   profile.css loads after theme.css and declares
+   `.navbar .nav-links { flex: 1 }` at the same specificity as the
+   responsive rule in the 860px block above, so it wins on load
+   order and the links never wrap — they overlap the brand and the
+   user chip instead. Qualifying both parts with their element name
+   raises specificity enough to win without !important.
+   ========================================================= */
+@media (max-width: 860px) {
+  nav.navbar > div.nav-links {
+    order: 3;
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+  }
+
+  nav.navbar > div.nav-links a {
+    font-size: 0.92rem;
+  }
+
+  nav.navbar > div.nav-brand-slot,
+  nav.navbar > div.nav-user {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  nav.navbar > div.nav-user {
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  nav.navbar > div.nav-brand-slot .sh-brand-sub {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  nav.navbar > div.nav-user .nav-user-name {
+    max-width: 9ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,148 @@
+/* =========================================================
+   Superadmin detail pages (view/edit hackathon, view/edit client)
+   Link AFTER style.css AND superadmin.css (reuses navbar + badge there).
+   ========================================================= */
+
+.ad-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 100px;
+}
+
+.ad-back-link {
+  display: inline-block;
+  margin-bottom: 40px;
+  font-family: var(--font-mono);
+  color: rgba(226, 226, 226, 0.55);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.ad-back-link:hover {
+  color: var(--gold-accent);
+}
+
+.ad-field-group {
+  margin-bottom: 38px;
+}
+
+.ad-field-label {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.ad-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--soot-850);
+  border: 1px solid var(--brass-900);
+  border-radius: 3px;
+  padding: 18px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #E2E2E2;
+}
+
+.ad-input:focus {
+  outline: none;
+  border-color: #f2ead9;
+}
+
+.ad-input:disabled,
+.ad-input[readonly] {
+  cursor: not-allowed;
+  opacity: 1;
+  color: #E2E2E2;
+  -webkit-text-fill-color: #E2E2E2;
+}
+
+.ad-id-input {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+textarea.ad-input {
+  resize: none;
+}
+
+.ad-textarea-large {
+  height: 260px;
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+/* Select with custom chevron */
+.ad-select-wrap {
+  position: relative;
+}
+
+select.ad-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+select.ad-input:disabled {
+  cursor: not-allowed;
+}
+
+.ad-select-chevron {
+  position: absolute;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #E2E2E2;
+  font-size: 0.9rem;
+}
+
+/* Two-field row (used if needed) */
+.ad-field-row {
+  display: flex;
+  gap: 35px;
+}
+
+.ad-field-row .ad-field-group {
+  flex: 1;
+}
+
+/* Save button */
+.ad-save-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.ad-save-btn {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 6px;
+  background: transparent;
+  color: #E2E2E2;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  padding: 16px 42px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ad-save-btn:hover {
+  background: var(--gold-accent);
+  color: #14100a;
+}
+
+.ad-save-feedback {
+  font-family: var(--font-mono);
+  color: #7fbf7f;
+  font-size: 0.85rem;
+  align-self: center;
+  margin-right: 20px;
+}
+
+@media (max-width: 700px) {
+  .ad-field-row { flex-direction: column; gap: 0; }
+}

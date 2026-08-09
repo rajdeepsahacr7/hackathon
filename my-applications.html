@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+  <title>My Applications | The Coded Cipher</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="hackathons.css">
+  <link rel="stylesheet" href="superadmin.css">
+  <script src="theme.js" defer></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="sh-brand" aria-label="The Coded Cipher — home">
+      <svg class="sh-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="8.6" stroke="currentColor" stroke-width="1.7"/>
+        <path d="M19.3 19.3 27.5 27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.72">
+          <path d="M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6"/>
+        </g>
+      </svg>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">The Coded Cipher</span>
+        <span class="sh-brand-sub">221B &middot; Estd. 1887</span>
+      </span>
+    </a>
+  </div>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="hackathons.html">Hackathons</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="nav-login">LOGIN</a>
+    <a href="signup.html" class="nav-signup">SIGNUP</a>
+  </div>
+</nav>
+<div class="sa-page-badge-row"><span class="sa-page-badge">My Applications</span></div>
+<div class="sa-wrap">
+  <div class="sa-table-wrap">
+    <table class="sa-table">
+      <thead><tr><th>Hackathon</th><th>Referral code</th><th>Status</th><th>Dates</th><th></th></tr></thead>
+      <tbody id="maBody"><tr><td colspan="5">Loading&hellip;</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<script src="site-forms.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.getElementById('maBody');
+  const esc = (s) => { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; };
+  const label = { submitted: 'Submitted', under_review: 'Under review', accepted: 'Accepted', rejected: 'Not selected' };
+  const colour = { submitted: '#d8d8d8', under_review: '#d98c3f', accepted: '#7fbf7f', rejected: '#d16a6a' };
+  api.get('api/me.php').then(({ data }) => {
+    if (!data.participant) { window.location.href = 'login.html'; return null; }
+    return api.get('api/applications_mine.php');
+  }).then((res) => {
+    if (!res) return;
+    const list = res.data.applications || [];
+    if (!list.length) {
+      body.innerHTML = '<tr><td colspan="5">You haven\'t applied to any hackathons yet. ' +
+                       '<a href="hackathons.html" class="sa-email-link">Browse open cases</a>.</td></tr>';
+      return;
+    }
+    body.innerHTML = list.map((a) => {
+      const dates = a.hackathonStart ? esc(a.hackathonStart) + ' → ' + esc(a.hackathonEnd || '') : 'TBA';
+      return '<tr>' +
+        '<td>' + esc(a.hackathonName) + '</td>' +
+        '<td class="sa-id-cell">' + esc(a.referralCode) + '</td>' +
+        '<td style="color:' + (colour[a.status] || '#d8d8d8') + '">' + (label[a.status] || a.status) + '</td>' +
+        '<td>' + dates + '</td>' +
+        '<td><a class="sa-email-link" href="hackathon-details.html?id=' + encodeURIComponent(a.hackathonId) + '">View</a></td>' +
+      '</tr>';
+    }).join('');
+  }).catch(() => { body.innerHTML = '<tr><td colspan="5">Could not reach the server.</td></tr>'; });
+});
+</script>
+</body>
+</html>

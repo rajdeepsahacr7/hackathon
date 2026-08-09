@@ -1,0 +1,203 @@
+/* =========================================================
+   Admin Login page
+   Link AFTER style.css so --gold-accent etc. are available.
+   ========================================================= */
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px var(--gutter);
+  box-sizing: border-box;
+}
+
+.al-card {
+  width: 100%;
+  max-width: 820px;
+  border: 1px solid var(--gold-accent);
+  border-radius: 3px;
+  padding: 70px 65px 55px;
+  box-sizing: border-box;
+}
+
+.al-heading {
+  font-family: var(--font-display);
+  color: var(--gold-accent);
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 0 0 90px;
+}
+
+.al-field-group {
+  margin-bottom: 45px;
+}
+
+.al-field-label {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--gold-accent);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.al-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 1px solid var(--brass-900);
+  border-radius: 3px;
+  padding: 20px 26px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: #E2E2E2;
+}
+
+.al-input:focus {
+  outline: none;
+  border-color: #f2ead9;
+}
+
+.al-error {
+  font-family: var(--font-mono);
+  color: #d16a6a;
+  font-size: 0.85rem;
+  margin: -30px 0 30px;
+  min-height: 18px;
+}
+
+.al-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.al-submit-btn {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--gold-accent);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  padding: 18px 55px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.al-submit-btn:hover {
+  background: var(--gold-accent);
+  color: #14100a;
+}
+
+@media (max-width: 600px) {
+  .al-card { padding: 50px 30px 40px; border-radius: 3px; }
+  .al-heading { font-size: 1.9rem; margin-bottom: 60px; }
+}
+
+/* ---------- Sherlock theme: the inspector's entrance ---------- */
+
+.al-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.al-card {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  padding: 54px 56px 46px;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(24, 20, 15, 0.96), rgba(14, 12, 9, 0.97)),
+    var(--tex-engrave);
+  border: 1px solid var(--brass-900);
+  box-shadow: var(--shadow-lg), var(--shadow-lamp);
+}
+
+.al-crest {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 18px;
+  color: var(--brass-500);
+}
+
+.al-crest svg { width: 100%; height: 100%; }
+
+.al-eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass-700);
+  margin: 0 0 10px;
+}
+
+.al-heading {
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 10px;
+  color: var(--brass-300);
+}
+
+.al-sub {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin: 0 0 34px;
+}
+
+.al-field-group {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.al-field-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-700);
+  margin-bottom: 8px;
+}
+
+.al-input {
+  background: var(--soot-900);
+  padding: 14px 16px;
+  font-size: 0.95rem;
+}
+
+.al-error { margin: 4px 0 18px; }
+
+.al-submit-row { justify-content: center; margin-top: 12px; }
+
+.al-submit-btn {
+  background: linear-gradient(180deg, var(--oxblood-500), var(--oxblood-700));
+  border: 1px solid var(--oxblood-300);
+  color: var(--parchment-100);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 15px 38px;
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.al-submit-btn:hover {
+  background: linear-gradient(180deg, var(--oxblood-300), var(--oxblood-500));
+  color: var(--parchment-100);
+  filter: brightness(1.06);
+}
+
+@media (max-width: 600px) {
+  .al-card { padding: 40px 26px 34px; }
+  .al-heading { font-size: 1.5rem; }
+}
+
+/* Full-bleed the cipher wall reads too loud; it should be wallpaper, not text. */
+.al-backdrop { opacity: 0.5; }
+.al-backdrop .sh-windows { opacity: 0.55; }

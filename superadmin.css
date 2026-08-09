@@ -1,0 +1,168 @@
+/* =========================================================
+   Superadmin panel (Registrations / Events / Clients)
+   Link AFTER style.css. Self-contained — does not depend on
+   profile.css or other navbar variants, since this navbar's
+   links and colors differ from the rest of the site.
+   ========================================================= */
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+}
+
+/* ---------- Navbar ---------- */
+.sa-navbar {
+  display: flex;
+  align-items: center;
+  padding: 22px var(--gutter);
+  border-bottom: 1px solid rgba(186, 157, 89, 0.3);
+}
+
+.sa-nav-spacer {
+  flex: 1;
+}
+
+.sa-nav-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+}
+
+.sa-nav-links a {
+  font-family: var(--font-body);
+  color: #d8d8d8;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.sa-nav-links a:hover {
+  color: #fff;
+}
+
+.sa-nav-user {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sa-nav-avatar {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  background: var(--gold-accent);
+  color: #14100a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.sa-nav-name {
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+}
+
+/* ---------- Page badge ---------- */
+.sa-page-badge-row {
+  text-align: center;
+  margin: 55px 0 60px;
+}
+
+.sa-page-badge {
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+  border-radius: 30px;
+  padding: 16px 45px;
+  color: var(--gold-accent);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+}
+
+/* ---------- Table ---------- */
+.sa-wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 100px;
+}
+
+.sa-table-wrap {
+  border: 1px solid var(--gold-accent);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.sa-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sa-table thead th {
+  background: #6b5a3a;
+  color: #f2ead9;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  text-align: left;
+  padding: 24px 35px;
+}
+
+.sa-table tbody td {
+  padding: 24px 35px;
+  font-family: var(--font-body);
+  color: #E2E2E2;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(186, 157, 89, 0.3);
+}
+
+.sa-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sa-table tbody tr.sa-row-removed {
+  display: none;
+}
+
+.sa-id-cell {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.sa-email-link {
+  color: #E2E2E2;
+  text-decoration: underline;
+}
+
+.sa-email-link:hover {
+  color: var(--gold-accent);
+}
+
+.sa-action-cell {
+  display: flex;
+  gap: 16px;
+}
+
+.sa-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@media (max-width: 800px) {
+  .sa-nav-links { gap: 22px; }
+  .sa-table thead th,
+  .sa-table tbody td { padding: 16px 18px; font-size: 0.9rem; }
+  .sa-table { font-size: 0.85rem; }
+}

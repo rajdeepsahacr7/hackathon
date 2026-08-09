@@ -1,0 +1,18 @@
+# uploads/ holds admin-uploaded hackathon banner images and nothing else.
+# Even though api/banner_upload.php verifies every file is a real image before
+# saving it, never let Apache treat anything in here as executable code.
+
+php_flag engine off
+
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+
+# Serve these as plain files, not as scripts, whatever the extension says.
+<IfModule mod_mime.c>
+  RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .cgi .pl .py .asp .aspx .shtml .htm .html
+  RemoveType    .php .phtml .php3 .php4 .php5 .php7 .php8 .phps
+  AddType text/plain .php .phtml .php3 .php4 .php5 .php7 .php8 .phps
+</IfModule>
+
+Options -ExecCGI -Indexes

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+<title>New Case Intake — The Baker Street Hackathon</title>
+<link rel="stylesheet" href="signup.css">
+  <script src="theme.js" defer></script>
+</head>
+<body>
+
+  <div class="scene" aria-hidden="true">
+    <div class="fog a"></div>
+    <div class="fog b"></div>
+    <svg class="skyline" viewBox="0 0 1200 220" preserveAspectRatio="none">
+      <rect x="0" y="150" width="90" height="70"/>
+      <rect x="80" y="115" width="60" height="105"/>
+      <rect x="150" y="160" width="75" height="60"/>
+      <rect x="235" y="105" width="50" height="115"/>
+      <g>
+        <rect x="300" y="40" width="46" height="180"/>
+        <polygon points="300,40 323,8 346,40"/>
+        <circle class="lamp" cx="323" cy="72" r="3"/>
+      </g>
+      <rect x="360" y="135" width="80" height="85"/>
+      <rect x="450" y="165" width="60" height="55"/>
+      <rect x="520" y="120" width="55" height="100"/>
+      <rect x="585" y="150" width="70" height="70"/>
+      <rect x="665" y="100" width="55" height="120"/>
+      <rect x="730" y="145" width="90" height="75"/>
+      <rect x="830" y="118" width="60" height="102"/>
+      <rect x="900" y="155" width="75" height="65"/>
+      <rect x="985" y="130" width="55" height="90"/>
+      <rect x="1050" y="160" width="80" height="60"/>
+      <rect x="1140" y="110" width="60" height="110"/>
+      <circle class="lamp" cx="120" cy="212" r="3" style="animation-delay:-2s"/>
+      <circle class="lamp" cx="470" cy="212" r="3" style="animation-delay:-3.4s"/>
+      <circle class="lamp" cx="760" cy="212" r="3" style="animation-delay:-1.1s"/>
+      <circle class="lamp" cx="1010" cy="212" r="3" style="animation-delay:-4s"/>
+    </svg>
+  </div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="card">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+    <div class="stamp">CONFIDENTIAL</div>
+
+    <svg class="seal-medallion" width="82" height="82" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id="wax1" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#9c3244"/>
+          <stop offset="55%" stop-color="#7a2331"/>
+          <stop offset="100%" stop-color="#3f1017"/>
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="46" fill="url(#wax1)" stroke="#2f0b10" stroke-width="1.5"/>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,.15)" stroke-dasharray="2 4"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(240,196,90,.4)"/>
+      <text x="50" y="59" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="30" fill="#ecdfc0">SH</text>
+    </svg>
+
+    <p class="eyebrow">221B Baker Street &middot; Estd. 1887</p>
+    <h1>Registration</h1>
+    <p class="subtitle">State your particulars for the record, Detective. The game, as ever, is afoot.</p>
+
+    <form id="signup-form" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="first-name">
+            <svg class="icon-magnifier" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>First Name</span><span class="tag">under review</span>
+          </label>
+          <input type="text" id="first-name" name="firstName" placeholder="e.g. Sherlock" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="last-name">
+            <svg class="icon-magnifier" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>Lastname</span><span class="tag">under review</span>
+          </label>
+          <input type="text" id="last-name" name="lastName" placeholder="e.g. Holmes" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">
+          <svg class="icon-magnifier" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Email Address</span><span class="tag">under review</span>
+        </label>
+        <input type="email" id="email" name="email" placeholder="s.holmes@bakerstreet.london" autocomplete="email" required>
+      </div>
+
+      <div class="field">
+        <label for="username">
+          <svg class="icon-magnifier" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Username</span><span class="tag">under review</span>
+        </label>
+        <input type="text" id="username" name="username" placeholder="Choose a handle only Watson would know" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="password">
+          <svg class="icon-magnifier" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Password</span><span class="tag">under review</span>
+        </label>
+        <div class="pw-wrap">
+          <input type="password" id="password" name="password" placeholder="A phrase none shall decode" autocomplete="new-password" minlength="6" required>
+          <button type="button" class="toggle-pw" id="toggle-password" aria-label="Show passphrase">
+            <svg class="icon-show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="icon-hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="21" x2="21" y2="3"/></svg>
+          </button>
+        </div>
+        <div class="strength-meter">
+          <div class="strength-bars">
+            <div class="strength-seg" data-i="0"></div>
+            <div class="strength-seg" data-i="1"></div>
+            <div class="strength-seg" data-i="2"></div>
+            <div class="strength-seg" data-i="3"></div>
+          </div>
+          <span class="strength-label" id="strength-label">Awaiting cipher&hellip;</span>
+        </div>
+      </div>
+
+      <p class="footnote" id="signup-error" style="color:#c0605f; min-height:1.2em;"></p>
+
+      <div class="submit-row">
+        <span class="case-number" id="case-number">CASE NO. 221B/0000</span>
+        <button type="submit" class="seal-btn" id="submit-btn">
+          <svg class="seal-icon" width="20" height="20" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <radialGradient id="wax2" cx="35%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#c9a24e"/>
+                <stop offset="100%" stop-color="#7c5a26"/>
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="50" r="46" fill="url(#wax2)"/>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="3"/>
+          </svg>
+          <span class="btn-text">Seal the Case File</span>
+        </button>
+      </div>
+    </form>
+
+    <p class="footnote">All particulars are held in strictest confidence, per the code of the Baker Street Irregulars.</p>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Case number, for atmosphere
+    var caseNum = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('case-number').textContent = 'CASE NO. 221B/' + caseNum;
+
+    // "Under investigation" focus state
+    document.querySelectorAll('.field').forEach(function (field) {
+      var input = field.querySelector('input');
+      if (!input) return;
+      input.addEventListener('focus', function () { field.classList.add('investigating'); });
+      input.addEventListener('blur', function () { field.classList.remove('investigating'); });
+    });
+
+    // Show / hide passphrase
+    var pwInput = document.getElementById('password');
+    var toggleBtn = document.getElementById('toggle-password');
+    toggleBtn.addEventListener('click', function () {
+      var showing = pwInput.type === 'text';
+      pwInput.type = showing ? 'password' : 'text';
+      toggleBtn.classList.toggle('revealed', !showing);
+      toggleBtn.setAttribute('aria-label', showing ? 'Show passphrase' : 'Hide passphrase');
+    });
+
+    // Cipher strength, in Holmesian terms
+    var segs = document.querySelectorAll('.strength-seg');
+    var strengthLabel = document.getElementById('strength-label');
+    var levels = [
+      { label: 'Elementary', color: '#8a3b3b' },
+      { label: 'A Three-Pipe Problem', color: '#b07a2e' },
+      { label: 'Worthy of Scotland Yard', color: '#6f7d3f' },
+      { label: 'Moriarty-Proof', color: '#d1a94f' }
+    ];
+    pwInput.addEventListener('input', function () {
+      var val = pwInput.value;
+      var score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+      if (/[0-9]/.test(val) && /[^A-Za-z0-9]/.test(val)) score++;
+      score = Math.min(score, 4);
+      segs.forEach(function (seg, i) {
+        var filled = i < score;
+        seg.classList.toggle('filled', filled);
+        seg.style.setProperty('--seg-color', val.length ? levels[Math.max(score - 1, 0)].color : '');
+      });
+      strengthLabel.textContent = val.length ? levels[Math.max(score - 1, 0)].label : 'Awaiting cipher\u2026';
+    });
+
+    // Seal & submit
+    var form = document.getElementById('signup-form');
+    var submitBtn = document.getElementById('submit-btn');
+    var errorText = document.getElementById('signup-error');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      errorText.textContent = '';
+      submitBtn.disabled = true;
+      var originalLabel = submitBtn.querySelector('.btn-text').textContent;
+      submitBtn.querySelector('.btn-text').textContent = 'Filing the Case…';
+
+      fetch('api/signup.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: document.getElementById('first-name').value.trim(),
+          lastName: document.getElementById('last-name').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          username: document.getElementById('username').value.trim(),
+          password: pwInput.value
+        })
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+          if (!result.ok || !result.data.success) {
+            errorText.textContent = (result.data && result.data.error) || 'Something went wrong. Please try again.';
+            submitBtn.disabled = false;
+            submitBtn.querySelector('.btn-text').textContent = originalLabel;
+            return;
+          }
+          submitBtn.classList.add('stamped');
+          submitBtn.querySelector('.btn-text').textContent = 'Case File Sealed';
+          // New account is now logged in server-side — send them to build their profile.
+          window.location.href = 'about.html';
+        })
+        .catch(function () {
+          errorText.textContent = 'Could not reach the server. Is the PHP/MySQL backend running?';
+          submitBtn.disabled = false;
+          submitBtn.querySelector('.btn-text').textContent = originalLabel;
+        });
+    });
+  });
+</script>
+</body>
+</html>

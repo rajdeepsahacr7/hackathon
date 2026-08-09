@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0806'/%3E%3Cg fill='none' stroke='%23ba9d59' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='8.6' stroke-width='1.9'/%3E%3Cpath d='M19.3 19.3 27.5 27.5' stroke-width='2.6'/%3E%3Cg stroke-width='1.4' opacity='.8'%3E%3Cpath d='M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- theme.css is loaded before every page-specific stylesheet so its
+       tokens are available to them and they can still override locally. -->
+  <link rel="stylesheet" href="theme.css">
+  <title>Application — Links | The Coded Cipher</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="puzzle-case.css">
+  <link rel="stylesheet" href="hackathon-apply.css">
+  <link rel="stylesheet" href="hackathon-create.css">
+  <link rel="stylesheet" href="application-lock.css">
+  <script src="application-lock.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand-slot">
+    <a href="index.html" class="sh-brand" aria-label="The Coded Cipher — home">
+      <svg class="sh-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="2"/>
+        <path d="M19.3 19.3 27.5 27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <g stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.75">
+          <path d="M8.6 10.4h4.3M14.7 10.4h2.7M8.6 13h2.5M12.9 13h4.5M8.6 15.6h5.6"/>
+        </g>
+      </svg>
+      <span class="sh-brand-text">
+        <span class="sh-brand-name">The Coded Cipher</span>
+        <span class="sh-brand-sub">221B &middot; Estd. 1887</span>
+      </span>
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About</a>
+    <a href="contact-us.html">Contact</a>
+  </div>
+  <div class="nav-user nav-right">
+    <span class="nav-user-avatar" id="navUserAvatar">RS</span>
+    <span class="nav-user-name">RAJDEEP SAHA</span>
+  </div>
+</nav>
+
+<div class="af-wrap">
+
+  <div class="af-tabs-row">
+    <div class="hc-tabs">
+      <a href="application-about.html" class="hc-tab">About you</a>
+      <a href="application-skills.html" class="hc-tab">Technical Skills</a>
+      <span class="hc-tab active">Links</span>
+      <a href="application-contact.html" class="hc-tab">Contact</a>
+    </div>
+  </div>
+
+  <!-- Riddle -->
+  <div class="case-file-header">
+    <span id="riddleTitle">Case File — The Coded Trail</span>
+    <span class="case-file-line"></span>
+  </div>
+
+  <div class="case-card">
+    <p class="case-quote" id="riddleText">Moriarty has encrypted the name of this section using his usual Caesar Shift of Three. Shift each letter back by three to reveal what Holmes seeks.</p>
+  </div>
+
+  <div class="cipher-tiles" id="cipherTiles">
+    <span class="cipher-letter">O</span>
+    <span class="cipher-letter">L</span>
+    <span class="cipher-letter">Q</span>
+    <span class="cipher-letter">N</span>
+    <span class="cipher-letter">V</span>
+  </div>
+
+  <form id="riddleForm" data-section="links">
+    <div class="answer-row">
+      <input type="text" id="riddleAnswer" class="answer-input" placeholder="DECODED WORD..." autocomplete="off">
+      <button type="submit" class="answer-btn">DECODE</button>
+    </div>
+    <p class="puzzle-feedback" id="riddleFeedback"></p>
+    <p class="riddle-attempts" id="riddleAttempts" hidden></p>
+    <div class="riddle-hint" id="riddleHint" hidden>
+      <span class="riddle-hint-label">Holmes offers a hint</span>
+      <p class="riddle-hint-text" id="riddleHintText"></p>
+    </div>
+  </form>
+
+  <!-- Locked form -->
+  <div class="af-form-wrap locked" id="afFormWrap">
+
+    <div class="af-lock-overlay" id="afLockOverlay">
+      <span class="af-lock-icon"><svg viewBox="0 0 40 46" fill="none" aria-hidden="true" focusable="false"><path d="M11 20V13.5a9 9 0 0 1 18 0V20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><rect x="5.2" y="20" width="29.6" height="21.4" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M9.4 24.2h21.2M9.4 37.2h21.2" stroke="currentColor" stroke-width="1" opacity=".38"/><circle cx="20" cy="29.4" r="3.1" stroke="currentColor" stroke-width="1.9"/><path d="M20 32.5v4.1" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+      <p class="af-lock-text">This section is sealed.</p>
+      <p class="af-lock-sub">Solve the case file above to break the seal.</p>
+    </div>
+
+    <div class="af-fields">
+      <div class="ha-link-row" data-toggle-field="github">
+        <span class="ha-link-icon gh">GH</span>
+        <span class="ha-link-prefix">github.com/</span>
+        <input type="text" name="githubUsername" class="ha-link-input" placeholder="username" disabled>
+      </div>
+      <div class="ha-link-row" data-toggle-field="linkedin">
+        <span class="ha-link-icon li">in</span>
+        <span class="ha-link-prefix">linkedin.com/in/</span>
+        <input type="text" name="linkedinUsername" class="ha-link-input" placeholder="username" disabled>
+      </div>
+
+      <div class="af-save-row">
+        <span class="ha-submit-feedback" id="afSaveFeedback"></span>
+        <button type="button" class="ha-submit-btn" id="afSaveBtn" disabled>Save</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="site-forms.js"></script>
+</body>
+</html>
